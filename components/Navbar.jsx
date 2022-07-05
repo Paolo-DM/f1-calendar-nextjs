@@ -1,167 +1,224 @@
 import React from "react";
+import Link from "next/link";
 import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import Image from "next/image";
+import { Menu, Popover, Transition } from "@headlessui/react";
+import { forwardRef } from "react";
+import {
+  MenuIcon,
+  UserGroupIcon,
+  PresentationChartLineIcon,
+  HomeIcon,
+  CalendarIcon,
+  XIcon,
+} from "@heroicons/react/outline";
+import { ChevronDownIcon } from "@heroicons/react/solid";
 
-const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+const MyLink = forwardRef((props, ref) => {
+  let { href, children, ...rest } = props;
+  return (
+    <Link href={href}>
+      <a ref={ref} {...rest}>
+        {children}
+      </a>
+    </Link>
+  );
+});
+
+MyLink.displayName = "MyLink";
+
+const solutions = [
+  {
+    name: "Driver Standings",
+    description:
+      "Get a better understanding of where your traffic is coming from.",
+    path: "/driver-standings",
+    icon: UserGroupIcon,
+  },
+  {
+    name: "Constructor Standings",
+    description: "Speak directly to your customers in a more meaningful way.",
+    path: "/constructor-standings",
+    icon: PresentationChartLineIcon,
+  },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-function Navbar() {
+export default function Example() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
-      {({ open }) => (
-        <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between h-16">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <XIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
-              </div>
-              <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex-shrink-0 flex items-center">
-                  <img
-                    className="block h-7 w-auto"
-                    src="../f1_logo.svg"
-                    alt="F1 logo"
-                  />
-                </div>
-                <div className="hidden sm:block sm:ml-6">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+    <Popover className="relative bg-[#0b2834]">
+      <div className=" px-4 sm:px-6  ">
+        <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
+          <div className="flex items-center justify-start lg:w-0 lg:flex-1">
+            <Link href="/">
+              <a>
+                <img
+                  className="h-6 w-auto sm:h-8"
+                  src="./f1_logo.svg"
+                  alt="f1 logo"
+                />
+              </a>
+            </Link>
 
-                {/* Profile dropdown */}
-                <Menu as="div" className="ml-3 relative">
-                  <div>
-                    <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                      <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
+            <h1 className="text-2xl text-white sm:text-3xl">F1Calendar</h1>
+          </div>
+          <div className="-my-2 -mr-2 md:hidden">
+            <Popover.Button className=" inline-flex items-center justify-center rounded-md p-2 text-white hover:text-gray-300  focus:outline-none ">
+              <span className="sr-only">Open menu</span>
+              <MenuIcon className="h-6 w-6" aria-hidden="true" />
+            </Popover.Button>
+          </div>
+
+          <div className="hidden items-center justify-end text-xl md:flex md:flex-1 lg:w-0">
+            <Link href="/">
+              <a className="whitespace-nowrap px-4 text-white hover:text-gray-300">
+                Home
+              </a>
+            </Link>
+
+            <Popover.Group>
+              <Popover className="relative px-4">
+                {({ open }) => (
+                  <>
+                    <Popover.Button
+                      className={classNames(
+                        open ? "text-gray-300" : "text-white",
+                        " group inline-flex items-center  hover:text-gray-300"
+                      )}
+                    >
+                      <span>Standings</span>
+                      <ChevronDownIcon
+                        className={classNames(
+                          open ? "text-gray-300" : "text-white",
+                          "ml-1 h-5 w-5 group-hover:text-gray-300"
+                        )}
+                        aria-hidden="true"
                       />
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
+                    </Popover.Button>
+
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-200"
+                      enterFrom="opacity-0 translate-y-1"
+                      enterTo="opacity-100 translate-y-0"
+                      leave="transition ease-in duration-150"
+                      leaveFrom="opacity-100 translate-y-0"
+                      leaveTo="opacity-0 translate-y-1"
+                    >
+                      <Popover.Panel className="absolute z-10 -ml-4 mt-3 max-w-md transform  px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                        <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                          <div className="relative grid gap-4 bg-[#0b2834] px-4  py-4 ">
+                            {solutions.map((item) => (
+                              <div
+                                key={item.name}
+                                className="flex text-white gap-2 "
+                              >
+                                <item.icon
+                                  className="h-6 w-6 flex-shrink-0 "
+                                  aria-hidden="true"
+                                />
+                                <Link href={item.path}>
+                                  <a className="-m-3 flex items-start rounded-lg p-3 hover:bg-[#42636e] ">
+                                    {item.name}
+                                  </a>
+                                </Link>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </Popover.Panel>
+                    </Transition>
+                  </>
+                )}
+              </Popover>
+            </Popover.Group>
+            <Link href="/calendar">
+              <a className=" inline-flex items-center justify-center whitespace-nowrap rounded-md border px-3  py-2 text-white  shadow-sm  hover:border-gray-300 hover:bg-[#0e3241] hover:text-gray-300">
+                Calendar
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <Transition
+        as={Fragment}
+        enter="duration-200 ease-out"
+        enterFrom="opacity-0 scale-95"
+        enterTo="opacity-100 scale-100"
+        leave="duration-100 ease-in"
+        leaveFrom="opacity-100 scale-100"
+        leaveTo="opacity-0 scale-95"
+      >
+        <Popover.Panel
+          focus
+          className="absolute inset-x-0 top-0 origin-top-right transform bg-[#0b2834] p-2 text-white transition md:hidden"
+        >
+          <div className="divide-y-2 divide-gray-50 rounded-lg shadow-lg ring-1  ring-black ring-opacity-5">
+            <div className="px-5 pt-5 pb-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center justify-start">
+                  <img
+                    className="h-6 w-auto"
+                    src="./f1_logo.svg"
+                    alt="f1 logo"
+                  />
+                  <h1>F1Calendar</h1>
+                </div>
+                <div className="-mr-2">
+                  <Popover.Button className=" inline-flex items-center justify-center rounded-md p-2  hover:text-gray-500  focus:outline-none  ">
+                    <span className="sr-only">Close menu</span>
+                    <XIcon className="h-6 w-6" aria-hidden="true" />
+                  </Popover.Button>
+                </div>
+              </div>
+              <div className="mt-6  ">
+                <nav className="grid gap-y-8 border-t pt-3">
+                  <Popover.Button
+                    as={MyLink}
+                    href="/"
+                    className="-m-3 flex items-center rounded-md p-3 hover:bg-[#42636e]  text-base font-medium"
                   >
-                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Your Profile
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
+                    <HomeIcon
+                      className="h-6 w-6 mr-3 flex-shrink-0"
+                      aria-hidden="true"
+                    />
+                    Home
+                  </Popover.Button>
+
+                  {solutions.map((item) => (
+                    <Popover.Button
+                      as={MyLink}
+                      href={item.path}
+                      key={item.name}
+                      className="-m-3 flex items-center rounded-md p-3 hover:bg-[#42636e]  text-base font-medium"
+                    >
+                      <item.icon
+                        className="h-6 w-6 mr-3 flex-shrink-0 "
+                        aria-hidden="true"
+                      />
+                      {item.name}
+                    </Popover.Button>
+                  ))}
+                  <Popover.Button
+                    as={MyLink}
+                    href="/calendar"
+                    className="-m-3 flex items-center rounded-md p-3 hover:bg-[#42636e]  text-base font-medium"
+                  >
+                    <CalendarIcon
+                      className="h-6 w-6 mr-3 flex-shrink-0"
+                      aria-hidden="true"
+                    />
+                    Calendar
+                  </Popover.Button>
+                </nav>
               </div>
             </div>
           </div>
-
-          <Disclosure.Panel className="sm:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block px-3 py-2 rounded-md text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
-            </div>
-          </Disclosure.Panel>
-        </>
-      )}
-    </Disclosure>
+        </Popover.Panel>
+      </Transition>
+    </Popover>
   );
 }
-
-export default Navbar;
