@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Fragment } from "react";
-import { Menu, Popover, Transition } from "@headlessui/react";
+import { Popover, Transition } from "@headlessui/react";
 import { forwardRef } from "react";
 import {
   MenuIcon,
@@ -154,7 +154,7 @@ export default function Example() {
       >
         <Popover.Panel
           focus
-          className="absolute inset-x-0 top-0 origin-top-right transform bg-[#0b2834] p-2 text-white transition md:hidden"
+          className="absolute inset-x-0 top-0 z-10 origin-top-right transform bg-[#0b2834] p-2 text-white transition md:hidden"
         >
           <div className="divide-y-2 divide-gray-50 rounded-lg shadow-lg ring-1  ring-black ring-opacity-5">
             <div className="px-5 pt-5 pb-6">
