@@ -3,11 +3,12 @@ import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import { circuits } from "../public/img/circuits";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/solid";
-import { DotButton } from "embla-carousel-react";
 
 export const EmblaCarousel = ({ raceId, setRaceId }) => {
-  useEmblaCarousel.globalOptions = { loop: false, startIndex: raceId - 1 };
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    startIndex: raceId,
+  });
 
   const scrollTo = useCallback(
     (index) => {
@@ -20,7 +21,7 @@ export const EmblaCarousel = ({ raceId, setRaceId }) => {
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
-    setRaceId(--raceId);
+    if (raceId >= 1) setRaceId(--raceId);
     console.log("raceID", raceId);
   }, [emblaApi, raceId, setRaceId]);
 
@@ -56,19 +57,26 @@ export const EmblaCarousel = ({ raceId, setRaceId }) => {
         </div>
       </div>
 
-      <ChevronLeftIcon
+      <button
+        disabled={raceId < 1}
+        className=" cursor-pointer absolute top-1/2 left-2 h-8 w-8   rounded-full bg-neutral-700 bg-opacity-10 text-gray-500 disabled:text-slate-300 disabled:bg-transparent disabled:cursor-not-allowed"
         onClick={scrollPrev}
-        className="embla__prev cursor-pointer absolute top-1/2 left-2 h-8 w-8   rounded-full bg-neutral-700 bg-opacity-10 text-gray-500 "
-      />
-      <ChevronRightIcon
+      >
+        <ChevronLeftIcon />
+      </button>
+
+      <button
+        disabled={raceId > 20}
         onClick={scrollNext}
-        className="embla__next cursor-pointer absolute top-1/2 right-2 h-8 w-8  rounded-full bg-neutral-700 bg-opacity-10 text-gray-500"
-      />
+        className=" cursor-pointer absolute top-1/2 right-2 h-8 w-8  rounded-full bg-neutral-700 bg-opacity-10 text-gray-500 disabled:text-slate-300 disabled:bg-transparent disabled:cursor-not-allowed"
+      >
+        <ChevronRightIcon />
+      </button>
       <div className="flex justify-center pt-4">
         {circuits.map((_, index) => (
           <button
-            className={`border rounded-full px-3 py-0.5  mx-0.5  ${
-              index === raceId ? "bg-[#1ccacd]" : "bg-[#efefef]"
+            className={`border-none rounded-full px-3 py-0.5  mx-0.5  ${
+              index === raceId ? "bg-[#0b2834]" : "bg-[#efefef]"
             }`}
             key={index}
             onClick={() => scrollTo(index)}

@@ -1,9 +1,29 @@
+import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import { EmblaCarousel } from "../components/Carousel";
+import RaceSchedule from "../components/RaceSchedule";
 
-export default function Home() {
+const currentYear = new Date().getFullYear();
+
+export const getStaticProps = async () => {
+  const res = await fetch(`https://ergast.com/api/f1/current.json`);
+  const data = await res.json();
+  const nextRace = await fetch(`http://ergast.com/api/f1/current/next.json`);
+  const data2 = await nextRace.json();
+
+  return {
+    props: {
+      calendarData: data.MRData,
+      lastRace: data2.MRData.RaceTable.round,
+    },
+  };
+};
+
+export default function Home({ calendarData, lastRace }) {
+  const [raceId, setRaceId] = useState(Number(lastRace));
+  console.log("raceID da INDEX:", raceId);
+
   return (
     <div>
       <Head>
@@ -13,26 +33,23 @@ export default function Home() {
       </Head>
 
       <main>
-        <div className="grid gap-4 md:gap-0 md:grid-cols-2">
+        <h1 className="text-center text-3xl mb-4 lg:text-4xl bg-[#42636e] text-white py-1 font-extralight tracking-wide">
+          F1 Schedule {currentYear}
+        </h1>
+        <div className="grid gap-4 md:gap-0 md:grid-cols-2 md:border-b  md:rounded-lg md:py-3">
           <div>
-            <EmblaCarousel></EmblaCarousel>
+            <EmblaCarousel
+              raceId={raceId}
+              setRaceId={setRaceId}
+            ></EmblaCarousel>
           </div>
-          <div className="bg-green-300">HELLO</div>
+          <div className="">
+            <RaceSchedule data={calendarData} raceId={raceId}></RaceSchedule>
+          </div>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <footer></footer>
     </div>
   );
 }
