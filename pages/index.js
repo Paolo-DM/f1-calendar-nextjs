@@ -22,7 +22,6 @@ export const getStaticProps = async () => {
 
 export default function Home({ calendarData, nextRace }) {
   const [raceId, setRaceId] = useState(Number(nextRace) - 1);
-  console.log("raceID da INDEX:", raceId);
 
   return (
     <div>
@@ -36,14 +35,14 @@ export default function Home({ calendarData, nextRace }) {
         <h1 className="text-center text-3xl mb-4 lg:text-4xl bg-[#42636e] text-white py-1 font-extralight tracking-wide">
           F1 Schedule {currentYear}
         </h1>
-        <div className="grid gap-4 md:gap-0 md:grid-cols-2 md:border-b  md:rounded-lg md:py-3">
+        <div className="grid  gap-4 md:gap-0 md:grid-cols-2 md:border-b  md:rounded-lg md:py-3">
           <div>
             <EmblaCarousel
               raceId={raceId}
               setRaceId={setRaceId}
             ></EmblaCarousel>
           </div>
-          <div className="">
+          <div>
             <RaceSchedule data={calendarData} raceId={raceId}></RaceSchedule>
           </div>
         </div>
