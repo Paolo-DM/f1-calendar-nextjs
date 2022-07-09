@@ -15,13 +15,13 @@ export const getStaticProps = async () => {
   return {
     props: {
       calendarData: data.MRData,
-      lastRace: data2.MRData.RaceTable.round,
+      nextRace: data2.MRData.RaceTable.round,
     },
   };
 };
 
-export default function Home({ calendarData, lastRace }) {
-  const [raceId, setRaceId] = useState(Number(lastRace));
+export default function Home({ calendarData, nextRace }) {
+  const [raceId, setRaceId] = useState(Number(nextRace) - 1);
   console.log("raceID da INDEX:", raceId);
 
   return (
