@@ -14,27 +14,19 @@ export const EmblaCarousel = ({ raceId, setRaceId }) => {
     (index) => {
       emblaApi && emblaApi.scrollTo(index);
       setRaceId(index);
-      console.log("scrollTo index: ", index);
     },
     [emblaApi, setRaceId]
   );
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
-    if (raceId >= 1) setRaceId(--raceId);
-    console.log("raceID", raceId);
+    setRaceId(--raceId);
   }, [emblaApi, raceId, setRaceId]);
 
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
     setRaceId(++raceId);
   }, [emblaApi, raceId, setRaceId]);
-
-  useEffect(() => {
-    if (emblaApi) {
-      // Embla API is ready
-    }
-  }, [emblaApi]);
 
   return (
     <div className="embla overflow-hidden relative md:border-r">
@@ -75,7 +67,7 @@ export const EmblaCarousel = ({ raceId, setRaceId }) => {
       <div className="flex justify-center pt-4">
         {circuits.map((_, index) => (
           <button
-            className={`border-none rounded-full px-3 py-0.5  mx-0.5  ${
+            className={`border-none rounded-full px-3 py-0.5  mx-0.5 md:px-2 lg:px-2.5  ${
               index === raceId ? "bg-[#0b2834]" : "bg-[#efefef]"
             }`}
             key={index}
