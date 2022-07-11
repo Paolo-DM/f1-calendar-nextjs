@@ -29,7 +29,7 @@ export const EmblaCarousel = ({ raceId, setRaceId }) => {
   }, [emblaApi, raceId, setRaceId]);
 
   return (
-    <div className="embla overflow-hidden relative md:border-r">
+    <div className="embla overflow-hidden relative md:border-r  md:border-r-gray-400">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container flex">
           {circuits.map((circuit) => (
@@ -51,7 +51,7 @@ export const EmblaCarousel = ({ raceId, setRaceId }) => {
 
       <button
         disabled={raceId < 1}
-        className=" cursor-pointer absolute top-1/2 left-2 h-8 w-8   rounded-full bg-neutral-700 bg-opacity-10 text-gray-500 disabled:text-slate-300 disabled:bg-transparent disabled:cursor-not-allowed"
+        className=" cursor-pointer absolute top-1/2 left-2 h-8 w-8   rounded-full bg-neutral-500 bg-opacity-10 text-gray-500 disabled:text-slate-300 disabled:bg-transparent disabled:cursor-not-allowed"
         onClick={scrollPrev}
       >
         <ChevronLeftIcon />
@@ -60,7 +60,7 @@ export const EmblaCarousel = ({ raceId, setRaceId }) => {
       <button
         disabled={raceId > 20}
         onClick={scrollNext}
-        className=" cursor-pointer absolute top-1/2 right-2 h-8 w-8  rounded-full bg-neutral-700 bg-opacity-10 text-gray-500 disabled:text-slate-300 disabled:bg-transparent disabled:cursor-not-allowed"
+        className=" cursor-pointer absolute top-1/2 right-2 h-8 w-8  rounded-full bg-neutral-500 bg-opacity-10 text-gray-500 disabled:text-slate-300 disabled:bg-transparent disabled:cursor-not-allowed"
       >
         <ChevronRightIcon />
       </button>
@@ -68,7 +68,7 @@ export const EmblaCarousel = ({ raceId, setRaceId }) => {
         {circuits.map((_, index) => (
           <button
             className={`border-none rounded-full px-3 py-0.5  mx-0.5 md:px-2 lg:px-2.5  ${
-              index === raceId ? "bg-[#0b2834]" : "bg-[#efefef]"
+              index === raceId ? "bg-black" : "bg-white"
             }`}
             key={index}
             onClick={() => scrollTo(index)}
