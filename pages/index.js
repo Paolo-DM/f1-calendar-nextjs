@@ -3,26 +3,36 @@ import Head from "next/head";
 import Image from "next/image";
 import { EmblaCarousel } from "../components/Carousel";
 import RaceSchedule from "../components/RaceSchedule";
+import PartialStandings from "../components/PartialStandings";
 
 const currentYear = new Date().getFullYear();
 
 export const getStaticProps = async () => {
   const res = await fetch(`https://ergast.com/api/f1/current.json`);
-  const data = await res.json();
-  const nextRace = await fetch(`http://ergast.com/api/f1/current/next.json`);
-  const data2 = await nextRace.json();
+  const schedule = await res.json();
+  const res2 = await fetch(`https://ergast.com/api/f1/current/next.json`);
+  const nextRace = await res2.json();
+  const res3 = await fetch(
+    "https://ergast.com/api/f1/current/driverStandings.json"
+  );
+  const driverStandings = await res3.json();
+  const res4 = await fetch(
+    "https://ergast.com/api/f1/current/constructorStandings.json"
+  );
+  const constructorStandings = await res4.json();
 
   return {
     props: {
-      calendarData: data.MRData,
-      nextRace: data2.MRData.RaceTable.round,
+      calendarData: schedule.MRData,
+      nextRace: nextRace.MRData.RaceTable.round,
+      driverStandings: driverStandings,
     },
   };
 };
 
-export default function Home({ calendarData, nextRace }) {
+export default function Home({ calendarData, nextRace, driverStandings }) {
   const [raceId, setRaceId] = useState(Number(nextRace) - 1);
-
+  console.log(driverStandings);
   return (
     <div>
       <Head>
@@ -32,18 +42,39 @@ export default function Home({ calendarData, nextRace }) {
       </Head>
 
       <main>
-        <h1 className="text-center text-3xl mb-4 lg:text-4xl bg-[#42636e] text-white py-1 font-extralight tracking-wide">
-          F1 Schedule {currentYear}
-        </h1>
-        <div className="grid  gap-4 md:gap-0 md:grid-cols-2 md:border-b  md:rounded-lg md:py-3">
+        {/* SCHEDULE */}
+        <div className="schedule-container bg-[#e5e5e6]">
+          <h1 className="text-center text-3xl mb-4 lg:text-4xl bg-[#42636e] text-white py-1 font-extralight tracking-wide">
+            F1 Schedule {currentYear}
+          </h1>
+          <div className="grid  gap-4 md:gap-0 md:grid-cols-2 md:border-b  md:rounded-lg md:pt-2 md:pb-6">
+            <div>
+              <EmblaCarousel
+                raceId={raceId}
+                setRaceId={setRaceId}
+              ></EmblaCarousel>
+            </div>
+            <div>
+              <RaceSchedule data={calendarData} raceId={raceId}></RaceSchedule>
+            </div>
+          </div>
+        </div>
+
+        {/* STANDINGS */}
+        <div className="grid  md:grid-cols-2 md:border-b  md:rounded-lg ">
           <div>
-            <EmblaCarousel
-              raceId={raceId}
-              setRaceId={setRaceId}
-            ></EmblaCarousel>
+            <Image
+              src={"/img/home/ferrari-pit.jpg"}
+              width={1200}
+              height={800}
+              layout="responsive"
+              alt="Pit stop Ferrari"
+            ></Image>
           </div>
           <div>
-            <RaceSchedule data={calendarData} raceId={raceId}></RaceSchedule>
+            <PartialStandings
+              driverStandings={driverStandings}
+            ></PartialStandings>
           </div>
         </div>
       </main>
