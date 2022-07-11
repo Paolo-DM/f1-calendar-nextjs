@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function RaceSchedule({ data, raceId }) {
   return (
-    <div className=" h-full flex items-center justify-center py-5 border-gray-200 border-y md:border-none md:py-0">
+    <div className=" h-full flex items-center justify-center py-5 border-gray-400 border-t  md:border-none md:py-0">
       <div className="flex flex-col gap-4 ">
         <h1 className="text-3xl">{data.RaceTable.Races[raceId].raceName}</h1>
         <p className="text-xl">
@@ -17,7 +17,7 @@ function RaceSchedule({ data, raceId }) {
           <strong>Time</strong>: {data.RaceTable.Races[raceId].time}
         </p>
 
-        <Button bordered color="default" auto className="w-1/2">
+        <Button bordered auto className="w-1/2">
           <a
             href={`${data.RaceTable.Races[raceId].Circuit.url}`}
             target="_blank"
