@@ -7,29 +7,43 @@ function PartialStandings({ driverStandings }) {
   console.log(driverStanding);
 
   return (
-    <>
+    <div className="h-[480px] overflow-y-auto">
+      <h1 className="text-center text-2xl pt-3">Drivers Standings</h1>
       <Table
         id={`react-aria-3-.0.0`}
         sticked
         striped
         lined
+        bordered={false}
         css={{
-          height: "100%",
-          minWidth: "100%",
+          height: "50%",
+          width: "100%",
           padding: "10px",
         }}
         aria-label="Partial standings table"
       >
         <Table.Header>
-          <Table.Column>POSITION</Table.Column>
-          <Table.Column>DRIVER</Table.Column>
-          <Table.Column>POINTS</Table.Column>
+          <Table.Column css={{ backgroundColor: "#0b2834", color: "white" }}>
+            POSITION
+          </Table.Column>
+          <Table.Column css={{ backgroundColor: "#0b2834", color: "white" }}>
+            DRIVER
+          </Table.Column>
+          <Table.Column css={{ backgroundColor: "#0b2834", color: "white" }}>
+            POINTS
+          </Table.Column>
         </Table.Header>
         <Table.Body>
           {driverStanding.map((pos) => {
             return (
               <Table.Row key={pos.position}>
-                <Table.Cell>{pos.position}</Table.Cell>
+                <Table.Cell
+                  css={{
+                    fontWeight: "600",
+                  }}
+                >
+                  {pos.position}
+                </Table.Cell>
                 <Table.Cell>
                   <User
                     squared
@@ -45,9 +59,9 @@ function PartialStandings({ driverStandings }) {
             );
           })}
         </Table.Body>
-        <Table.Pagination shadow noMargin align="center" rowsPerPage={6} />
+        <Table.Pagination shadow noMargin align="center" rowsPerPage={5} />
       </Table>
-    </>
+    </div>
   );
 }
 
