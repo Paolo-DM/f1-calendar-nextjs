@@ -43,7 +43,7 @@ export default function Home({ calendarData, nextRace, driverStandings }) {
 
       <main>
         {/* SCHEDULE */}
-        <div className="schedule-container bg-[#e5e5e6]">
+        <div className="schedule-container ">
           <h1 className="text-center text-3xl mb-4 lg:text-4xl bg-[#42636e] text-white py-1 font-extralight tracking-wide">
             F1 Schedule {currentYear}
           </h1>
@@ -61,8 +61,8 @@ export default function Home({ calendarData, nextRace, driverStandings }) {
         </div>
 
         {/* STANDINGS */}
-        <div className="grid  md:grid-cols-2 md:border-b  md:rounded-lg ">
-          <div>
+        <div className="grid lg:h-[500px]  md:grid-cols-2 md:border-b  md:rounded-lg bg-[#f1f2f2] ">
+          <div className="">
             <Image
               src={"/img/home/ferrari-pit.jpg"}
               width={1200}
@@ -71,7 +71,7 @@ export default function Home({ calendarData, nextRace, driverStandings }) {
               alt="Pit stop Ferrari"
             ></Image>
           </div>
-          <div>
+          <div className="overflow-hidden">
             <PartialStandings
               driverStandings={driverStandings}
             ></PartialStandings>
