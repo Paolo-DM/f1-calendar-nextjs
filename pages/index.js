@@ -26,11 +26,17 @@ export const getStaticProps = async () => {
       calendarData: schedule.MRData,
       nextRace: nextRace.MRData.RaceTable.round,
       driverStandings: driverStandings,
+      constructorStandings: constructorStandings,
     },
   };
 };
 
-export default function Home({ calendarData, nextRace, driverStandings }) {
+export default function Home({
+  calendarData,
+  nextRace,
+  driverStandings,
+  constructorStandings,
+}) {
   const [raceId, setRaceId] = useState(Number(nextRace) - 1);
   console.log(driverStandings);
   return (
@@ -47,22 +53,22 @@ export default function Home({ calendarData, nextRace, driverStandings }) {
           <h1 className="text-center text-3xl mb-4 lg:text-4xl bg-[#42636e] text-white py-1 font-extralight tracking-wide">
             F1 Schedule {currentYear}
           </h1>
-          <div className="grid  gap-4 md:gap-0 md:grid-cols-2 md:border-b  md:rounded-lg md:pt-2 md:pb-6">
-            <div>
+          <div className="grid  gap-4 md:gap-0 md:grid-cols-[1.3fr_1fr] md:border-b  md:rounded-lg md:pt-2 md:pb-6">
+            <div className="pt-10 ">
               <EmblaCarousel
                 raceId={raceId}
                 setRaceId={setRaceId}
               ></EmblaCarousel>
             </div>
-            <div>
+            <div className="py-10">
               <RaceSchedule data={calendarData} raceId={raceId}></RaceSchedule>
             </div>
           </div>
         </div>
 
         {/* STANDINGS */}
-        <div className="grid lg:h-[500px]  md:grid-cols-2 md:border-b  md:rounded-lg bg-[#f1f2f2] ">
-          <div className="">
+        <div className="grid md:grid-cols-2 md:border-b  md:rounded-lg  lg:h-[40vh] md:h-[25vh]  ">
+          <div className="block  ">
             <Image
               src={"/img/home/ferrari-pit.jpg"}
               width={1200}
@@ -71,10 +77,29 @@ export default function Home({ calendarData, nextRace, driverStandings }) {
               alt="Pit stop Ferrari"
             ></Image>
           </div>
-          <div className="overflow-hidden">
+          <div>
+            <h1 className="text-center text-2xl py-2">Driver Standings</h1>
+            <div className="overflow-auto w-full h-5/6">
+              <PartialStandings
+                standings={driverStandings}
+                type="Driver"
+              ></PartialStandings>
+            </div>
+          </div>
+          <div className="overflow-auto">
             <PartialStandings
-              driverStandings={driverStandings}
+              standings={constructorStandings}
+              type="Constructor"
             ></PartialStandings>
+          </div>
+          <div className="block  ">
+            <Image
+              src={"/img/home/finish-line.jpg"}
+              width={1200}
+              height={800}
+              layout="responsive"
+              alt="Finish Line"
+            ></Image>
           </div>
         </div>
       </main>
