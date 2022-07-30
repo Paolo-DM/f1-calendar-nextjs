@@ -29,7 +29,7 @@ export const EmblaCarousel = ({ raceId, setRaceId }) => {
   }, [emblaApi, raceId, setRaceId]);
 
   return (
-    <div className="embla overflow-hidden relative md:border-r  md:border-r-gray-400">
+    <div className="embla overflow-hidden relative">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container flex">
           {circuits.map((circuit) => (
