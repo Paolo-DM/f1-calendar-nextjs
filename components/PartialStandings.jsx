@@ -79,13 +79,13 @@ function PartialStandings({ standings, type }) {
         </Table>
       ) : (
         <>
-          <h1 className="text-center text-2xl py-1 ">Constructor Standings</h1>
           <Table
             sticked
             borderWeight={0}
             css={{
               height: "auto",
               minWidth: "100%",
+              position: "absolute",
               p: "$xs",
               paddingTop: "$0",
               paddingBottom: "$2",
@@ -147,7 +147,6 @@ function PartialStandings({ standings, type }) {
                 );
               })}
             </Table.Body>
-            <Table.Pagination noMargin align="center" rowsPerPage={6} />
           </Table>
         </>
       )}
