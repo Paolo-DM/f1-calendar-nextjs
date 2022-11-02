@@ -4,6 +4,8 @@ import Image from "next/image";
 import { EmblaCarousel } from "../components/Carousel";
 import RaceSchedule from "../components/RaceSchedule";
 import PartialStandings from "../components/PartialStandings";
+import { Button } from "@nextui-org/react";
+import Link from "@nextui-org/react";
 
 const currentYear = new Date().getFullYear();
 
@@ -66,8 +68,8 @@ export default function Home({
         </div>
 
         {/* STANDINGS */}
-        <div className="grid md:grid-cols-2 md:border-b  md:rounded-lg  lg:h-[40vh] md:h-[25vh]  ">
-          <div className="block  ">
+        <div className="grid md:grid-cols-2 md:border-b  md:rounded-lg ">
+          <div className="block">
             <Image
               src={"/img/home/ferrari-pit.jpg"}
               width={1200}
@@ -76,16 +78,19 @@ export default function Home({
               alt="Pit stop Ferrari"
             ></Image>
           </div>
-          <div>
-            <h1 className="text-center text-2xl py-2">Driver Standings</h1>
-            <div className="overflow-auto w-full h-5/6">
+          <div className="grid grid-rows-[0.1fr_1fr_0.2fr] bg-white">
+            <h1 className="text-center text-2xl pt-1 ">Driver Standings</h1>
+            <div className="overflow-y-scroll wrapper">
               <PartialStandings
                 standings={driverStandings}
                 type="Driver"
               ></PartialStandings>
             </div>
+            <Button bordered auto className="w-1/4 m-auto mb-2 ">
+              <a href={"/driver-standings"}>Full Driver Standings</a>
+            </Button>
           </div>
-          <div className="overflow-auto">
+          <div className="relative">
             <PartialStandings
               standings={constructorStandings}
               type="Constructor"
