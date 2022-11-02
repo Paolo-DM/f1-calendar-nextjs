@@ -90,11 +90,19 @@ export default function Home({
               <a href={"/driver-standings"}>Full Driver Standings</a>
             </Button>
           </div>
-          <div className="relative">
-            <PartialStandings
-              standings={constructorStandings}
-              type="Constructor"
-            ></PartialStandings>
+          <div className="grid grid-rows-[0.1fr_1fr_0.2fr] bg-white">
+            <h1 className="text-center text-2xl pt-1 ">
+              Constructor Standings
+            </h1>
+            <div className="overflow-y-scroll wrapper">
+              <PartialStandings
+                standings={constructorStandings}
+                type="Constructor"
+              ></PartialStandings>
+            </div>
+            <Button bordered auto className="w-1/4 m-auto mb-2 ">
+              <a href={"/driver-standings"}>Full Driver Standings</a>
+            </Button>
           </div>
           <div className="block  ">
             <Image
