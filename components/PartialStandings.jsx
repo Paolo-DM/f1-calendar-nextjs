@@ -10,22 +10,30 @@ function PartialStandings({ standings, type }) {
   console.log(constructorStanding);
 
   return (
-    <div className=" h-auto flex flex-col justify-center  bg-white ">
+    <div className="relative">
       {type === "Driver" ? (
         <Table
-          id={`react-aria-3-.0.0`}
+          sticked
           borderWeight={0}
           css={{
-            height: "100%",
-            width: "100%",
-            p: "$md",
+            height: "auto",
+            minWidth: "100%",
+            position: "absolute",
+            p: "$xs",
             paddingTop: "$0",
+            paddingBottom: "$2",
           }}
           aria-label="Partial standings table"
         >
           <Table.Header>
-            <Table.Column css={{ backgroundColor: "#0b2834", color: "white" }}>
-              POSITION
+            <Table.Column
+              css={{
+                backgroundColor: "#0b2834",
+                color: "white",
+                paddingRight: "$8",
+              }}
+            >
+              POS
             </Table.Column>
             <Table.Column css={{ backgroundColor: "#0b2834", color: "white" }}>
               {type.toUpperCase()}
@@ -39,7 +47,9 @@ function PartialStandings({ standings, type }) {
               return (
                 <Table.Row
                   key={pos.position}
-                  css={{ "&:nth-child(even)": { backgroundColor: "#f1f3f5" } }}
+                  css={{
+                    "&:nth-child(even)": { backgroundColor: "#f1f3f5" },
+                  }}
                 >
                   <Table.Cell
                     css={{
@@ -53,7 +63,7 @@ function PartialStandings({ standings, type }) {
                       size="lg"
                       squared
                       src={`../img/pilots/${pos.Driver.familyName}.png`}
-                      name={"paolo"}
+                      name={`${pos.Driver.givenName} ${pos.Driver.familyName}`}
                       css={{ p: 0 }}
                     >
                       {pos.Constructors[0].name}
@@ -66,65 +76,80 @@ function PartialStandings({ standings, type }) {
               );
             })}
           </Table.Body>
-          <Table.Pagination shadow noMargin align="center" rowsPerPage={7} />
         </Table>
       ) : (
-        <Table
-          id={`react-aria-3-.0.0`}
-          borderWeight={0}
-          css={{
-            height: "100%",
-            width: "100%",
-            p: "$md",
-            paddingTop: "$0",
-          }}
-          aria-label="Partial standings table"
-        >
-          <Table.Header>
-            <Table.Column css={{ backgroundColor: "#0b2834", color: "white" }}>
-              POSITION
-            </Table.Column>
-            <Table.Column css={{ backgroundColor: "#0b2834", color: "white" }}>
-              {type.toUpperCase()}
-            </Table.Column>
-            <Table.Column css={{ backgroundColor: "#0b2834", color: "white" }}>
-              POINTS
-            </Table.Column>
-          </Table.Header>
-          <Table.Body>
-            {constructorStanding.map((pos) => {
-              return (
-                <Table.Row
-                  key={pos.position}
-                  css={{ "&:nth-child(even)": { backgroundColor: "#f1f3f5" } }}
-                >
-                  <Table.Cell
+        <>
+          <h1 className="text-center text-2xl py-1 ">Constructor Standings</h1>
+          <Table
+            sticked
+            borderWeight={0}
+            css={{
+              height: "auto",
+              minWidth: "100%",
+              p: "$xs",
+              paddingTop: "$0",
+              paddingBottom: "$2",
+            }}
+            aria-label="Partial standings table"
+          >
+            <Table.Header>
+              <Table.Column
+                css={{
+                  backgroundColor: "#0b2834",
+                  color: "white",
+                  paddingRight: "$8",
+                }}
+              >
+                POS
+              </Table.Column>
+              <Table.Column
+                css={{ backgroundColor: "#0b2834", color: "white" }}
+              >
+                {type.toUpperCase()}
+              </Table.Column>
+              <Table.Column
+                css={{ backgroundColor: "#0b2834", color: "white" }}
+              >
+                POINTS
+              </Table.Column>
+            </Table.Header>
+            <Table.Body>
+              {constructorStanding.map((pos) => {
+                return (
+                  <Table.Row
+                    key={pos.position}
                     css={{
-                      fontWeight: "600",
+                      "&:nth-child(even)": { backgroundColor: "#f1f3f5" },
                     }}
                   >
-                    {pos.position}
-                  </Table.Cell>
-                  <Table.Cell>
-                    <User
-                      size="lg"
-                      squared
-                      src={`../img/pilots/leclerc.png`}
-                      name={"paolo"}
-                      css={{ p: 0 }}
+                    <Table.Cell
+                      css={{
+                        fontWeight: "600",
+                      }}
                     >
-                      {pos.Constructor.name}
-                    </User>
-                  </Table.Cell>
-                  <Table.Cell css={{ color: "$blue900", fontWeight: "900" }}>
-                    {pos.points}
-                  </Table.Cell>
-                </Table.Row>
-              );
-            })}
-          </Table.Body>
-          <Table.Pagination shadow noMargin align="center" rowsPerPage={7} />
-        </Table>
+                      {pos.position}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <User
+                        size="lg"
+                        squared
+                        src={`../img/cars/${pos.Constructor.constructorId}.png`}
+                        name={pos.Constructor.name}
+                        css={{ p: 0 }}
+                      >
+                        {pos.Constructor.nationality}
+                      </User>
+                    </Table.Cell>
+                    <Table.Cell css={{ color: "$blue900", fontWeight: "900" }}>
+                      {pos.points}
+                    </Table.Cell>
+                  </Table.Row>
+                );
+              })}
+            </Table.Body>
+            <Table.Pagination noMargin align="center" rowsPerPage={6} />
+          </Table>
+        </>
       )}
     </div>
   );
