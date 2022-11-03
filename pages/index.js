@@ -50,7 +50,7 @@ export default function Home({
       </Head>
       <main>
         {/* SCHEDULE */}
-        <div className="schedule-container ">
+        <div className="schedule-container bg-[#e6e5e5]">
           <h1 className="text-center text-3xl mb-4 lg:text-4xl bg-[#42636e] text-white py-1 font-extralight tracking-wide">
             F1 Schedule {currentYear}
           </h1>
@@ -68,7 +68,7 @@ export default function Home({
         </div>
 
         {/* STANDINGS */}
-        <div className="grid md:grid-cols-2 md:border-b  md:rounded-lg ">
+        <div className="grid md:grid-cols-2   md:rounded-lg ">
           <div className="block">
             <Image
               src={"/img/home/ferrari-pit.jpg"}
@@ -78,7 +78,7 @@ export default function Home({
               alt="Pit stop Ferrari"
             ></Image>
           </div>
-          <div className="grid grid-rows-[0.1fr_400px_0.2fr] md:grid-rows-[0.1fr_1fr_0.2fr] bg-white pt-6 md:pt-0">
+          <div className="grid grid-rows-[0.1fr_400px_0.2fr] md:grid-rows-[0.1fr_1fr_0.2fr] pt-6 md:pt-0">
             <h1 className="text-center text-2xl pt-1 ">Driver Standings</h1>
             <div className="overflow-y-scroll wrapper">
               <PartialStandings
@@ -90,7 +90,7 @@ export default function Home({
               <a href={"/driver-standings"}>Full Driver Standings</a>
             </Button>
           </div>
-          <div className="grid grid-rows-[0.1fr_400px_0.2fr] md:grid-rows-[0.1fr_1fr_0.2fr] bg-white pt-6 md:pt-0">
+          <div className="grid grid-rows-[0.1fr_400px_0.2fr] md:grid-rows-[0.1fr_1fr_0.2fr]  pt-6 md:pt-0">
             <h1 className="text-center text-2xl pt-1 ">
               Constructor Standings
             </h1>
@@ -104,7 +104,7 @@ export default function Home({
               <a href={"/driver-standings"}>Full Driver Standings</a>
             </Button>
           </div>
-          <div className="block  ">
+          <div className="block">
             <Image
               src={"/img/home/finish-line.jpg"}
               width={1200}
@@ -115,7 +115,7 @@ export default function Home({
           </div>
         </div>
       </main>
-      <footer>
+      <footer className="bg-[#0b2834]">
         <Footer></Footer>
       </footer>
     </div>
