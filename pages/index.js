@@ -5,7 +5,7 @@ import { EmblaCarousel } from "../components/Carousel";
 import RaceSchedule from "../components/RaceSchedule";
 import PartialStandings from "../components/PartialStandings";
 import { Button } from "@nextui-org/react";
-import { Avatar } from "@nextui-org/react";
+import Footer from "../components/Footer";
 
 const currentYear = new Date().getFullYear();
 
@@ -78,7 +78,7 @@ export default function Home({
               alt="Pit stop Ferrari"
             ></Image>
           </div>
-          <div className="grid grid-rows-[0.1fr_1fr_0.2fr] bg-white pt-6 md:pt-0">
+          <div className="grid grid-rows-[0.1fr_400px_0.2fr] md:grid-rows-[0.1fr_1fr_0.2fr] bg-white pt-6 md:pt-0">
             <h1 className="text-center text-2xl pt-1 ">Driver Standings</h1>
             <div className="overflow-y-scroll wrapper">
               <PartialStandings
@@ -113,18 +113,11 @@ export default function Home({
               alt="Finish Line"
             ></Image>
           </div>
-          <div>
-            <Avatar
-              size="xl"
-              text="Primary"
-              color="primary"
-              textColor="white"
-            ></Avatar>
-          </div>
-          <div>PAOLO</div>
         </div>
       </main>
-      <footer></footer>
+      <footer>
+        <Footer></Footer>
+      </footer>
     </div>
   );
 }
