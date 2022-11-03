@@ -31,14 +31,33 @@ function PartialStandings({ standings, type }) {
                 backgroundColor: "#0b2834",
                 color: "white",
                 paddingRight: "$8",
+                position: "sticky",
+                top: "0",
+                zIndex: "$max",
               }}
             >
               POS
             </Table.Column>
-            <Table.Column css={{ backgroundColor: "#0b2834", color: "white" }}>
+            <Table.Column
+              css={{
+                backgroundColor: "#0b2834",
+                color: "white",
+                position: "sticky",
+                top: "0",
+                zIndex: "$max",
+              }}
+            >
               {type.toUpperCase()}
             </Table.Column>
-            <Table.Column css={{ backgroundColor: "#0b2834", color: "white" }}>
+            <Table.Column
+              css={{
+                backgroundColor: "#0b2834",
+                color: "white",
+                position: "sticky",
+                top: "0",
+                zIndex: "$max",
+              }}
+            >
               POINTS
             </Table.Column>
           </Table.Header>
@@ -98,17 +117,32 @@ function PartialStandings({ standings, type }) {
                   backgroundColor: "#0b2834",
                   color: "white",
                   paddingRight: "$8",
+                  position: "sticky",
+                  top: "0",
+                  zIndex: "$max",
                 }}
               >
                 POS
               </Table.Column>
               <Table.Column
-                css={{ backgroundColor: "#0b2834", color: "white" }}
+                css={{
+                  backgroundColor: "#0b2834",
+                  color: "white",
+                  position: "sticky",
+                  top: "0",
+                  zIndex: "$max",
+                }}
               >
                 {type.toUpperCase()}
               </Table.Column>
               <Table.Column
-                css={{ backgroundColor: "#0b2834", color: "white" }}
+                css={{
+                  backgroundColor: "#0b2834",
+                  color: "white",
+                  position: "sticky",
+                  top: "0",
+                  zIndex: "$max",
+                }}
               >
                 POINTS
               </Table.Column>
