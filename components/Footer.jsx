@@ -3,11 +3,11 @@ import { Card, Grid, Text, Link } from "@nextui-org/react";
 export default function Footer() {
   return (
     <Card
-      css={{ p: "$6", mw: "100%", backgroundColor: "#0b2834", border: "none" }}
+      css={{ p: "$2", mw: "100%", backgroundColor: "#0b2834", border: "none" }}
     >
       <Card.Header>
-        <img alt="nextui logo" src="./f1_logo.svg" width="84px" height="68px" />
-        <Grid.Container css={{ pl: "$6" }}>
+        <img alt="nextui logo" src="./f1_logo.svg" width="102px" />
+        <Grid.Container css={{ pl: "$8" }}>
           <Grid xs={12}>
             <Text h4 css={{ lineHeight: "$xs", color: "white" }}>
               F1Calendar
@@ -28,19 +28,13 @@ export default function Footer() {
       <Card.Body css={{ py: "$2" }}>
         <Text css={{ color: "white" }}>
           A web app for Formula 1 fans to learn about standings and schedules of
-          current or past F1 seasons. Made by Paolo Di Martino
+          current or past F1 seasons.
         </Text>
-      </Card.Body>
-      <Card.Footer>
-        <Link
-          icon
-          color="primary"
-          target="_blank"
-          href="https://github.com/nextui-org/nextui"
-        >
-          Visit source code on GitHub.
+        <Link href="https://www.linkedin.com/in/paolo-di-martino1/" isExternal>
+          <span className="text-white">Made by &nbsp;</span> Paolo Di Martino
         </Link>
-      </Card.Footer>
+      </Card.Body>
+      <Card.Footer></Card.Footer>
     </Card>
   );
 }
