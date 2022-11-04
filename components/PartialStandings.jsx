@@ -81,7 +81,7 @@ function PartialStandings({ standings, type }) {
                     <User
                       size="lg"
                       squared
-                      src={`../img/pilots/${pos.Driver.familyName}.png`}
+                      src={`../img/pilots/${pos.Driver.driverId}.png`}
                       name={`${pos.Driver.givenName} ${pos.Driver.familyName}`}
                       css={{ p: 0 }}
                     >
