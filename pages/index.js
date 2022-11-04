@@ -114,6 +114,14 @@ export default function Home({
             ></Image>
           </div>
         </div>
+        <div className="flex items-center justify-center font-mono bg-[#f1f3f5]  ">
+          <h1 className="p-4 md:p-5 text-lg md:text-2xl text-center ">
+            “I’ve always believed that you should never, ever give up and you
+            should always <span className="text-red-600">keep fighting</span>{" "}
+            even when there’s only a slightest chance.” –{" "}
+            <span className="text-red-600">Michael</span> Schumacher
+          </h1>
+        </div>
       </main>
       <footer className="bg-[#0b2834]">
         <Footer></Footer>
