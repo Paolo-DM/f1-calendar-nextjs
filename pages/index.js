@@ -51,7 +51,7 @@ export default function Home({
       <main>
         {/* SCHEDULE */}
         <div className="schedule-container bg-[#e6e5e5]">
-          <h1 className="text-center text-3xl mb-4 lg:text-4xl bg-[#42636e] text-white py-1 font-extralight tracking-wide">
+          <h1 className="text-center text-3xl font-['Raleway'] mb-4 lg:text-4xl bg-[#42636e] text-white py-1 font-extralight tracking-wide">
             F1 Schedule {currentYear}
           </h1>
           <div className="grid  gap-4 md:gap-0 md:grid-cols-[1.3fr_1fr] md:border-b  md:rounded-lg md:pt-2 md:pb-6">
@@ -78,8 +78,10 @@ export default function Home({
               alt="Pit stop Ferrari"
             ></Image>
           </div>
-          <div className="grid grid-rows-[0.1fr_400px_0.2fr] md:grid-rows-[0.1fr_1fr_0.2fr] pt-6 md:pt-0">
-            <h1 className="text-center text-2xl pt-1 ">Driver Standings</h1>
+          <div className="grid grid-rows-[0.1fr_400px_0.2fr] md:grid-rows-[0.1fr_1fr_0.2fr] pt-6 md:pt-0 border-b">
+            <h1 className="text-center text-2xl pt-1 font-mono">
+              Driver Standings
+            </h1>
             <div className="overflow-y-scroll wrapper">
               <PartialStandings
                 standings={driverStandings}
@@ -91,7 +93,7 @@ export default function Home({
             </Button>
           </div>
           <div className="grid grid-rows-[0.1fr_400px_0.2fr] md:grid-rows-[0.1fr_1fr_0.2fr]  pt-6 md:pt-0">
-            <h1 className="text-center text-2xl pt-1 ">
+            <h1 className="text-center text-2xl pt-1 font-mono ">
               Constructor Standings
             </h1>
             <div className="overflow-y-scroll wrapper">
@@ -101,7 +103,7 @@ export default function Home({
               ></PartialStandings>
             </div>
             <Button bordered auto className="w-1/4 m-auto mb-2 ">
-              <a href={"/driver-standings"}>Full Driver Standings</a>
+              <a href={"/driver-standings"}>Full Constructor Standings</a>
             </Button>
           </div>
           <div className="block">
@@ -114,8 +116,8 @@ export default function Home({
             ></Image>
           </div>
         </div>
-        <div className="flex items-center justify-center font-mono bg-[#f1f3f5]  ">
-          <h1 className="p-4 md:p-5 text-lg md:text-2xl text-center ">
+        <div className="font-['Raleway'] bg-[#f1f3f5]  ">
+          <h1 className="p-4 md:p-5 text-lg md:text-2xl tracking-wider text-center ">
             “I’ve always believed that you should never, ever give up and you
             should always <span className="text-red-600">keep fighting</span>{" "}
             even when there’s only a slightest chance.” –{" "}
