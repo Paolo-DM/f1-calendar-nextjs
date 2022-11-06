@@ -113,14 +113,14 @@ export default function Example() {
                             {solutions.map((item) => (
                               <div
                                 key={item.name}
-                                className="flex text-white gap-2 "
+                                className="flex text-white gap-2"
                               >
                                 <item.icon
-                                  className="h-6 w-6 flex-shrink-0 "
+                                  className="h-6 w-6 flex-shrink-0 mr-2"
                                   aria-hidden="true"
                                 />
                                 <Link href={item.path}>
-                                  <a className="-m-3 flex items-start rounded-lg p-3 hover:bg-[#42636e] ">
+                                  <a className="-m-3 flex items-start rounded-lg p-3 hover:text-gray-400 ">
                                     {item.name}
                                   </a>
                                 </Link>
