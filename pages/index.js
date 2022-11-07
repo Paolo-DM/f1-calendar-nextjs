@@ -40,7 +40,6 @@ export default function Home({
   constructorStandings,
 }) {
   const [raceId, setRaceId] = useState(Number(nextRace) - 1);
-  console.log(driverStandings);
   return (
     <div>
       <Head>
