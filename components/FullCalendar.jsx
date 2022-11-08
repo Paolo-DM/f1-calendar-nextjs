@@ -11,8 +11,9 @@ function FullCalendar({ schedule, yearlyResults }) {
   console.log("YEARLY2:", yearResults);
 
   return (
-    <>
+    <div className="md:w-[99%] md:mx-auto">
       <Table
+        className="w-[20%]"
         sticked
         bordered
         borderWeight={"light"}
@@ -23,55 +24,19 @@ function FullCalendar({ schedule, yearlyResults }) {
         aria-label="Calendar table"
       >
         <Table.Header>
-          <Table.Column
-            css={{
-              backgroundColor: "#0b2834",
-              color: "white",
-              paddingRight: "$8",
-              fontFamily: "Raleway",
-              fontSize: "$lg",
-            }}
-          >
+          <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway'] pr-1 md:pr-0">
             Round
           </Table.Column>
-          <Table.Column
-            css={{
-              backgroundColor: "#0b2834",
-              color: "white",
-              fontFamily: "Raleway",
-              fontSize: "$lg",
-            }}
-          >
-            Race and Circuit
+          <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
+            Race & Circuit
           </Table.Column>
-          <Table.Column
-            css={{
-              backgroundColor: "#0b2834",
-              color: "white",
-              fontFamily: "Raleway",
-              fontSize: "$lg",
-            }}
-          >
+          <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
             Date
           </Table.Column>
-          <Table.Column
-            css={{
-              backgroundColor: "#0b2834",
-              color: "white",
-              fontFamily: "Raleway",
-              fontSize: "$lg",
-            }}
-          >
+          <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
             Winner
           </Table.Column>
-          <Table.Column
-            css={{
-              backgroundColor: "#0b2834",
-              color: "white",
-              fontFamily: "Raleway",
-              fontSize: "$lg",
-            }}
-          >
+          <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
             Results
           </Table.Column>
         </Table.Header>
@@ -107,6 +72,7 @@ function FullCalendar({ schedule, yearlyResults }) {
                 </Table.Cell>
                 <Table.Cell>
                   <User
+                    className=""
                     zoomed
                     size="lg"
                     src={`https://countryflagsapi.com/png/${country}`}
@@ -117,18 +83,23 @@ function FullCalendar({ schedule, yearlyResults }) {
                     {race.Circuit.circuitName}
                   </User>
                 </Table.Cell>
-                <Table.Cell css={{ fontFamily: "$mono", fontSize: "$lg" }}>
-                  {raceDate.toLocaleString().slice(0, -3)}
+                <Table.Cell>
+                  <p className="font-mono text-xs sm:text-base md:text-lg">
+                    {raceDate.toLocaleString().slice(0, -3)}
+                  </p>
                 </Table.Cell>
                 <Table.Cell
-                  css={{
-                    fontFamily: "Raleway",
-                    fontWeight: "600",
-                  }}
+                // css={{
+                //   fontFamily: "Raleway",
+                //   fontWeight: "600",
+                // }}
                 >
-                  {yearResults[race.round - 1]
-                    ? yearResults[race.round - 1]?.Results[0].Driver.familyName
-                    : "n.a."}
+                  <p className="font-mono font-semibold text-xs sm:text-base md:text-lg">
+                    {yearResults[race.round - 1]
+                      ? yearResults[race.round - 1]?.Results[0].Driver
+                          .familyName
+                      : "n.a."}
+                  </p>
                 </Table.Cell>
                 <Table.Cell>
                   <EyeIcon className="w-8 hover:text-[#979797a9] hover:cursor-pointer text-[#979797]" />
@@ -138,7 +109,7 @@ function FullCalendar({ schedule, yearlyResults }) {
           })}
         </Table.Body>
       </Table>
-    </>
+    </div>
   );
 }
 
