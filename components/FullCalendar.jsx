@@ -1,11 +1,14 @@
 import { Table, User } from "@nextui-org/react";
 import { EyeIcon } from "@heroicons/react/outline";
 
-function FullCalendar({ schedule, year }) {
+function FullCalendar({ schedule, yearlyResults }) {
   // const driverStanding =
   //   standings.MRData.StandingsTable.StandingsLists[0].DriverStandings;
   // console.log("DA FULLCALENDAR:", driverStanding);
   const yearSchedule = schedule.MRData.RaceTable.Races;
+  console.log("YEARLY:", yearlyResults);
+  const yearResults = yearlyResults.MRData.RaceTable.Races;
+  console.log("YEARLY2:", yearResults);
 
   return (
     <>
@@ -25,92 +28,114 @@ function FullCalendar({ schedule, year }) {
               backgroundColor: "#0b2834",
               color: "white",
               paddingRight: "$8",
-              position: "sticky",
-              top: "0",
-              zIndex: "$max",
+              fontFamily: "Raleway",
+              fontSize: "$lg",
             }}
           >
-            ROUND
+            Round
           </Table.Column>
           <Table.Column
             css={{
               backgroundColor: "#0b2834",
               color: "white",
-              position: "sticky",
-              top: "0",
-              zIndex: "$max",
+              fontFamily: "Raleway",
+              fontSize: "$lg",
             }}
           >
-            RACE CIRCUIT
+            Race and Circuit
           </Table.Column>
           <Table.Column
             css={{
               backgroundColor: "#0b2834",
               color: "white",
-              position: "sticky",
-              top: "0",
-              zIndex: "$max",
+              fontFamily: "Raleway",
+              fontSize: "$lg",
             }}
           >
-            DATE
+            Date
           </Table.Column>
           <Table.Column
             css={{
               backgroundColor: "#0b2834",
               color: "white",
-              position: "sticky",
-              top: "0",
-              zIndex: "1",
+              fontFamily: "Raleway",
+              fontSize: "$lg",
             }}
           >
-            WINNER
+            Winner
           </Table.Column>
           <Table.Column
             css={{
               backgroundColor: "#0b2834",
               color: "white",
-              position: "sticky",
-              top: "0",
-              zIndex: "$max",
+              fontFamily: "Raleway",
+              fontSize: "$lg",
             }}
           >
-            RESULTS
+            Results
           </Table.Column>
         </Table.Header>
         <Table.Body>
-          <Table.Row
-            css={{
-              "&:nth-child(even)": { backgroundColor: "#f1f3f5" },
-            }}
-          >
-            <Table.Cell
-              css={{
-                fontWeight: "600",
-              }}
-            >
-              {yearSchedule[0].round}
-            </Table.Cell>
-            <Table.Cell>
-              <User
-                size="lg"
-                squared
-                src={`../img/pilots/leclerc.png`}
-                name={`Bahrain Grand Prix`}
-                css={{ p: 0 }}
+          {yearSchedule.map((race) => {
+            const raceDate = new Date(race.date + " " + race.time);
+            let country = race.Circuit.Location.country;
+
+            // Handle country name exceptions
+            if (country === "UK") {
+              country = "GB";
+            } else if (country === "UAE") {
+              country = "ae";
+            } else if (country === "Russia") {
+              country = "ru";
+            } else if (country === "Korea") {
+              country = "kr";
+            }
+
+            return (
+              <Table.Row
+                key={race.round}
+                css={{
+                  "&:nth-child(even)": { backgroundColor: "#f1f3f5" },
+                }}
               >
-                {"Bahrain International Circuit"}
-              </User>
-            </Table.Cell>
-            <Table.Cell css={{ color: "$blue900", fontWeight: "600" }}>
-              {"11/09/2022, 15:00"}
-            </Table.Cell>
-            <Table.Cell css={{ color: "$blue900", fontWeight: "900" }}>
-              {"C.Leclerc"}
-            </Table.Cell>
-            <Table.Cell>
-              <EyeIcon className="w-8 hover:text-[#979797a9] hover:cursor-pointer text-[#979797]" />
-            </Table.Cell>
-          </Table.Row>
+                <Table.Cell
+                  css={{
+                    fontWeight: "600",
+                  }}
+                >
+                  {race.round}
+                </Table.Cell>
+                <Table.Cell>
+                  <User
+                    zoomed
+                    size="lg"
+                    src={`https://countryflagsapi.com/png/${country}`}
+                    altText="Country flag"
+                    name={race.raceName}
+                    css={{ p: 0 }}
+                  >
+                    {race.Circuit.circuitName}
+                  </User>
+                </Table.Cell>
+                <Table.Cell css={{ fontFamily: "$mono", fontSize: "$lg" }}>
+                  {raceDate.toLocaleString().slice(0, -3)}
+                </Table.Cell>
+                <Table.Cell
+                  css={{
+                    fontFamily: "Raleway",
+                    fontWeight: "600",
+                  }}
+                >
+                  {yearResults[race.round - 1]
+                    ? yearResults[race.round - 1]?.Results[0].Driver.familyName
+                    : "n.a."}
+                </Table.Cell>
+                <Table.Cell>
+                  <EyeIcon className="w-8 hover:text-[#979797a9] hover:cursor-pointer text-[#979797]" />
+                </Table.Cell>
+              </Table.Row>
+            );
+          })}
         </Table.Body>
       </Table>
     </>
