@@ -1,23 +1,23 @@
 import { Table, User } from "@nextui-org/react";
+import { EyeIcon } from "@heroicons/react/outline";
 
-function FullCalendar({ standings, type }) {
-  const driverStanding =
-    standings.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-  console.log("DA FULLCALENDAR:", driverStanding);
+function FullCalendar({ schedule, year }) {
+  // const driverStanding =
+  //   standings.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+  // console.log("DA FULLCALENDAR:", driverStanding);
+  const yearSchedule = schedule.MRData.RaceTable.Races;
+
   return (
     <>
       <Table
         sticked
-        borderWeight={0}
+        bordered
+        borderWeight={"light"}
+        shadow={false}
         css={{
           height: "auto",
-          minWidth: "100%",
-          position: "absolute",
-          p: "$xs",
-          paddingTop: "$0",
-          paddingBottom: "$2",
         }}
-        aria-label="Partial standings table"
+        aria-label="Calendar table"
       >
         <Table.Header>
           <Table.Column
@@ -30,7 +30,7 @@ function FullCalendar({ standings, type }) {
               zIndex: "$max",
             }}
           >
-            POS
+            ROUND
           </Table.Column>
           <Table.Column
             css={{
@@ -41,7 +41,7 @@ function FullCalendar({ standings, type }) {
               zIndex: "$max",
             }}
           >
-            {type.toUpperCase()}
+            RACE CIRCUIT
           </Table.Column>
           <Table.Column
             css={{
@@ -52,42 +52,65 @@ function FullCalendar({ standings, type }) {
               zIndex: "$max",
             }}
           >
-            POINTS
+            DATE
+          </Table.Column>
+          <Table.Column
+            css={{
+              backgroundColor: "#0b2834",
+              color: "white",
+              position: "sticky",
+              top: "0",
+              zIndex: "1",
+            }}
+          >
+            WINNER
+          </Table.Column>
+          <Table.Column
+            css={{
+              backgroundColor: "#0b2834",
+              color: "white",
+              position: "sticky",
+              top: "0",
+              zIndex: "$max",
+            }}
+          >
+            RESULTS
           </Table.Column>
         </Table.Header>
         <Table.Body>
-          {driverStanding.map((pos) => {
-            return (
-              <Table.Row
-                key={pos.position}
-                css={{
-                  "&:nth-child(even)": { backgroundColor: "#f1f3f5" },
-                }}
+          <Table.Row
+            css={{
+              "&:nth-child(even)": { backgroundColor: "#f1f3f5" },
+            }}
+          >
+            <Table.Cell
+              css={{
+                fontWeight: "600",
+              }}
+            >
+              {yearSchedule[0].round}
+            </Table.Cell>
+            <Table.Cell>
+              <User
+                size="lg"
+                squared
+                src={`../img/pilots/leclerc.png`}
+                name={`Bahrain Grand Prix`}
+                css={{ p: 0 }}
               >
-                <Table.Cell
-                  css={{
-                    fontWeight: "600",
-                  }}
-                >
-                  {pos.position}
-                </Table.Cell>
-                <Table.Cell>
-                  <User
-                    size="lg"
-                    squared
-                    src={`../img/pilots/${pos.Driver.driverId}.png`}
-                    name={`${pos.Driver.givenName} ${pos.Driver.familyName}`}
-                    css={{ p: 0 }}
-                  >
-                    {pos.Constructors[0].name}
-                  </User>
-                </Table.Cell>
-                <Table.Cell css={{ color: "$blue900", fontWeight: "900" }}>
-                  {pos.points}
-                </Table.Cell>
-              </Table.Row>
-            );
-          })}
+                {"Bahrain International Circuit"}
+              </User>
+            </Table.Cell>
+            <Table.Cell css={{ color: "$blue900", fontWeight: "600" }}>
+              {"11/09/2022, 15:00"}
+            </Table.Cell>
+            <Table.Cell css={{ color: "$blue900", fontWeight: "900" }}>
+              {"C.Leclerc"}
+            </Table.Cell>
+            <Table.Cell>
+              <EyeIcon className="w-8 hover:text-[#979797a9] hover:cursor-pointer text-[#979797]" />
+            </Table.Cell>
+          </Table.Row>
         </Table.Body>
       </Table>
     </>
