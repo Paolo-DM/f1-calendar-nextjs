@@ -6,7 +6,7 @@ export default function Footer() {
       css={{ p: "$2", mw: "100%", backgroundColor: "#0b2834", border: "none" }}
     >
       <Card.Header>
-        <img alt="nextui logo" src="./f1_logo.svg" width="102px" />
+        <img alt="F1 logo" src="./f1_logo.svg" width="102px" />
         <Grid.Container css={{ pl: "$8" }}>
           <Grid xs={12}>
             <Text h4 css={{ lineHeight: "$xs", color: "white" }}>
