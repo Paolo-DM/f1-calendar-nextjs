@@ -22,7 +22,7 @@ class MyDocument extends Document {
             crossOrigin="true"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
             rel="stylesheet"
           />
           {CssBaseline.flush()}
