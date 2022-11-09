@@ -1,17 +1,18 @@
 import { Collapse } from "@nextui-org/react";
 import Link from "next/link";
-import { forwardRef } from "react";
 
-function YearPicker({ year, setYear, currentYear }) {
+export const yearList = (currY) => {
   const years = [];
-  for (let i = 1950; i <= currentYear; i++) {
+  for (let i = 1950; i <= currY; i++) {
     years.push(i);
   }
+  return years;
+};
 
+function YearPicker({ year, setYear, currentYear }) {
   return (
     <div className="md:w-[50%] md:mx-auto my-3 mx-1">
       <Collapse
-        className=""
         bordered
         title={
           <p className="text-2xl font-['Raleway'] font-semibold">{year}</p>
@@ -23,7 +24,7 @@ function YearPicker({ year, setYear, currentYear }) {
         }
       >
         <div className="flex flex-wrap gap-4">
-          {years.map((year) => {
+          {yearList(currentYear).map((year) => {
             return (
               <Link key={year} href={`/calendar/${year}`}>
                 <a
