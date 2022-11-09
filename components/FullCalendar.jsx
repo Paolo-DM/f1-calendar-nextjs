@@ -9,7 +9,7 @@ function FullCalendar({ schedule, yearlyResults }) {
   return (
     <div className="md:w-[99%] md:mx-auto">
       <Table
-        className=""
+        className="z-0"
         sticked
         bordered
         borderWeight={"light"}
@@ -39,6 +39,7 @@ function FullCalendar({ schedule, yearlyResults }) {
         <Table.Body>
           {yearSchedule.map((race) => {
             const raceDate = new Date(race.date + " " + race.time);
+            const raceYear = new Date(race.date).getFullYear();
             let countryName = race.Circuit.Location.country;
             let found = flags.find((country) => country.name === countryName);
             let code = found ? found.code : "n/a";
@@ -62,7 +63,7 @@ function FullCalendar({ schedule, yearlyResults }) {
                     className=""
                     zoomed
                     size="lg"
-                    src={`./img/flags/${code}.svg`}
+                    src={`../img/flags/${code.toLowerCase()}.svg`}
                     altText="Country flag"
                     name={race.raceName}
                     css={{ p: 0 }}
@@ -72,7 +73,11 @@ function FullCalendar({ schedule, yearlyResults }) {
                 </Table.Cell>
                 <Table.Cell>
                   <p className="font-mono text-xs sm:text-base md:text-lg">
-                    {raceDate.toLocaleString().slice(0, -3)}
+                    {raceYear < 2005
+                      ? new Date(race.date + ", 03:00:00")
+                          .toLocaleString()
+                          .slice(0, -10)
+                      : raceDate.toLocaleString().slice(0, -3)}
                   </p>
                 </Table.Cell>
                 <Table.Cell
