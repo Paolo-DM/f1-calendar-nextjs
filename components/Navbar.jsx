@@ -49,14 +49,14 @@ function classNames(...classes) {
 export default function Example() {
   return (
     <Popover className="relative bg-[#0b2834]">
-      <div className=" px-4 sm:px-6  ">
+      <div className=" px-4 sm:px-6">
         <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
           <div className="flex items-center justify-start lg:w-0 lg:flex-1">
             <Link href="/">
               <a>
                 <img
                   className="h-6 w-auto sm:h-8"
-                  src="./f1_logo.svg"
+                  src="../f1_logo.svg"
                   alt="f1 logo"
                 />
               </a>
@@ -79,7 +79,7 @@ export default function Example() {
             </Link>
 
             <Popover.Group>
-              <Popover className="relative px-4">
+              <Popover className="relative px-4 ">
                 {({ open }) => (
                   <>
                     <Popover.Button
@@ -162,7 +162,7 @@ export default function Example() {
                 <div className="flex items-center justify-start">
                   <img
                     className="h-6 w-auto"
-                    src="./f1_logo.svg"
+                    src="../f1_logo.svg"
                     alt="f1 logo"
                   />
                   <h1>F1Calendar</h1>
