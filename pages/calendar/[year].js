@@ -1,25 +1,25 @@
 import { useState } from "react";
 import YearPicker from "../../components/YearPicker";
 import FullCalendar from "../../components/FullCalendar";
-
+import { yearList } from "../../components/YearPicker";
 const currentYear = new Date().getFullYear();
 
 export async function getStaticPaths() {
-  return {
-    paths: [{ params: { year: "1950" } }, { params: { year: "1951" } }],
-    fallback: false, // can also be true or 'blocking'
-  };
+  // Get the paths we want to pre-render based on years
+  const paths = yearList(currentYear).map((y) => ({
+    params: { year: y.toString() },
+  }));
+  // We'll pre-render only these paths at build time.
+  return { paths, fallback: false };
 }
+// }
 
-export const getStaticProps = async (context) => {
-  console.log("PARAMS:", context.params.year);
-  const res = await fetch(
-    `https://ergast.com/api/f1/${context.params.year}.json`
-  );
+export const getStaticProps = async ({ params }) => {
+  const res = await fetch(`https://ergast.com/api/f1/${params.year}.json`);
   const schedule = await res.json();
 
   const res1 = await fetch(
-    `https://ergast.com/api/f1/${context.params.year}/results.json?limit=400`
+    `https://ergast.com/api/f1/${params.year}/results.json?limit=600`
   );
   const results = await res1.json();
 
@@ -27,7 +27,7 @@ export const getStaticProps = async (context) => {
     props: {
       schedule: schedule,
       yearlyResults: results,
-      selectedYear: context.params.year,
+      selectedYear: params.year,
     },
   };
 };
