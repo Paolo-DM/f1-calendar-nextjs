@@ -16,6 +16,7 @@ function FullCalendar({ schedule, yearlyResults }) {
         shadow={false}
         css={{
           height: "auto",
+          padding: "$xs",
         }}
         aria-label="Calendar table"
       >
@@ -80,12 +81,7 @@ function FullCalendar({ schedule, yearlyResults }) {
                       : raceDate.toLocaleString().slice(0, -3)}
                   </p>
                 </Table.Cell>
-                <Table.Cell
-                // css={{
-                //   fontFamily: "Raleway",
-                //   fontWeight: "600",
-                // }}
-                >
+                <Table.Cell>
                   <p className="font-mono font-semibold text-xs sm:text-base md:text-lg">
                     {yearResults[race.round - 1]
                       ? yearResults[race.round - 1]?.Results[0].Driver
