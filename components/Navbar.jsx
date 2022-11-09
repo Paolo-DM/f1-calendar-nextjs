@@ -13,6 +13,8 @@ import {
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 
+const currentYear = new Date().getFullYear();
+
 const MyLink = forwardRef((props, ref) => {
   let { href, children, ...rest } = props;
   return (
@@ -134,7 +136,7 @@ export default function Example() {
                 )}
               </Popover>
             </Popover.Group>
-            <Link href="/calendar">
+            <Link href={`/calendar/${currentYear}`}>
               <a className=" inline-flex items-center justify-center whitespace-nowrap rounded-md border px-3  py-2 text-white  shadow-sm  hover:border-gray-300 hover:bg-[#0e3241] hover:text-gray-300">
                 Calendar
               </a>
@@ -204,7 +206,7 @@ export default function Example() {
                   ))}
                   <Popover.Button
                     as={MyLink}
-                    href="/calendar"
+                    href={`/calendar/${currentYear}`}
                     className="-m-3 flex items-center rounded-md p-3 hover:bg-[#42636e]  text-base font-medium"
                   >
                     <CalendarIcon
