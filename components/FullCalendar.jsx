@@ -1,19 +1,15 @@
 import { Table, User } from "@nextui-org/react";
 import { EyeIcon } from "@heroicons/react/outline";
+import { flags } from "../public/img/flags/flagsCodeObj";
 
 function FullCalendar({ schedule, yearlyResults }) {
-  // const driverStanding =
-  //   standings.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-  // console.log("DA FULLCALENDAR:", driverStanding);
   const yearSchedule = schedule.MRData.RaceTable.Races;
-  console.log("YEARLY:", yearlyResults);
   const yearResults = yearlyResults.MRData.RaceTable.Races;
-  console.log("YEARLY2:", yearResults);
 
   return (
     <div className="md:w-[99%] md:mx-auto">
       <Table
-        className="w-[20%]"
+        className=""
         sticked
         bordered
         borderWeight={"light"}
@@ -43,18 +39,9 @@ function FullCalendar({ schedule, yearlyResults }) {
         <Table.Body>
           {yearSchedule.map((race) => {
             const raceDate = new Date(race.date + " " + race.time);
-            let country = race.Circuit.Location.country;
-
-            // Handle country name exceptions
-            if (country === "UK") {
-              country = "GB";
-            } else if (country === "UAE") {
-              country = "ae";
-            } else if (country === "Russia") {
-              country = "ru";
-            } else if (country === "Korea") {
-              country = "kr";
-            }
+            let countryName = race.Circuit.Location.country;
+            let found = flags.find((country) => country.name === countryName);
+            let code = found ? found.code : "n/a";
 
             return (
               <Table.Row
@@ -75,7 +62,7 @@ function FullCalendar({ schedule, yearlyResults }) {
                     className=""
                     zoomed
                     size="lg"
-                    src={`https://countryflagsapi.com/png/${country}`}
+                    src={`./img/flags/${code}.svg`}
                     altText="Country flag"
                     name={race.raceName}
                     css={{ p: 0 }}
