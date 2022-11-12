@@ -33,6 +33,7 @@ function CalendarDetail({ schedule, selectedYear }) {
         year={year}
         setYear={setYear}
         currentYear={currentYear}
+        route="calendar"
       ></YearPicker>
       <FullCalendar schedule={schedule} year={year}></FullCalendar>
     </>

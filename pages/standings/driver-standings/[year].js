@@ -1,6 +1,6 @@
 import { useState } from "react";
 import YearPicker from "../../../components/YearPicker";
-import FullCalendar from "../../../components/FullCalendar";
+import DriverStandings from "../../../components/DriverStandings";
 import { yearList } from "../../../components/YearPicker";
 const currentYear = new Date().getFullYear();
 
@@ -14,18 +14,20 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const res = await fetch(`https://ergast.com/api/f1/${params.year}.json`);
-  const schedule = await res.json();
+  const res = await fetch(
+    `https://ergast.com/api/f1/${params.year}/driverstandings.json`
+  );
+  const standing = await res.json();
 
   return {
     props: {
-      schedule: schedule,
+      standing: standing,
       selectedYear: params.year,
     },
   };
 };
 
-function CalendarDetail({ schedule, selectedYear }) {
+function CalendarDetail({ standing, selectedYear }) {
   const [year, setYear] = useState(selectedYear);
   return (
     <>
@@ -33,8 +35,9 @@ function CalendarDetail({ schedule, selectedYear }) {
         year={year}
         setYear={setYear}
         currentYear={currentYear}
+        route="driver-standings"
       ></YearPicker>
-      <FullCalendar schedule={schedule} year={year}></FullCalendar>
+      <DriverStandings standing={standing} year={year}></DriverStandings>
     </>
   );
 }
