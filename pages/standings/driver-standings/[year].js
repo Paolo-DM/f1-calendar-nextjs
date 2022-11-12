@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 
 export const getStaticProps = async ({ params }) => {
   const res = await fetch(
-    `https://ergast.com/api/f1/${params.year}/driverstandings.json`
+    `https://ergast.com/api/f1/${params.year}/driverStandings.json`
   );
   const standing = await res.json();
 
