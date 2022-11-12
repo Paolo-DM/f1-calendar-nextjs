@@ -22,7 +22,6 @@ export default function Footer() {
             <Grid xs={12}>
               <Link
                 css={{ color: "$accents8" }}
-                icon
                 href="www.f1-calendar-paolo-dm.vercel.app"
                 target="_blank"
               >
