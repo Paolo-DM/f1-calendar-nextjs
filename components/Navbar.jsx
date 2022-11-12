@@ -58,7 +58,7 @@ export default function Example() {
               <a>
                 <img
                   className="h-6 w-auto sm:h-8"
-                  src="../f1_logo.svg"
+                  src="../../f1_logo.svg"
                   alt="f1 logo"
                 />
               </a>
