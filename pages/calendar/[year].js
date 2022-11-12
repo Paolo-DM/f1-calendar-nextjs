@@ -12,16 +12,10 @@ export async function getStaticPaths() {
   // We'll pre-render only these paths at build time.
   return { paths, fallback: false };
 }
-// }
 
 export const getStaticProps = async ({ params }) => {
   const res = await fetch(`https://ergast.com/api/f1/${params.year}.json`);
   const schedule = await res.json();
-
-  // const res1 = await fetch(
-  //   `https://ergast.com/api/f1/${params.year}/results.json?limit=600`
-  // );
-  // const results = await res1.json();
 
   return {
     props: {
