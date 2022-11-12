@@ -3,7 +3,7 @@ import { flags } from "../public/img/flags/flagsCodeObj";
 
 function ConstructorStandings({ standing }) {
   const constructorStandings =
-    standing.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
+    standing.MRData.StandingsTable.StandingsLists[0]?.ConstructorStandings;
   return (
     <div className="w-[99%] md:w-[65%] mx-auto mb-8">
       <Table
@@ -33,7 +33,7 @@ function ConstructorStandings({ standing }) {
           </Table.Column>
         </Table.Header>
         <Table.Body>
-          {constructorStandings.map((pos) => {
+          {constructorStandings?.map((pos) => {
             let nationality = pos.Constructor.nationality;
             let found = flags.find((country) => country.adj === nationality);
             let code = found ? found.code : "n/a";
