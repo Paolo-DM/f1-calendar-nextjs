@@ -13,7 +13,6 @@ export default function ScrollModal({ raceRound, year }) {
       <Modal
         scroll
         blur
-        className=""
         width="900px"
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
