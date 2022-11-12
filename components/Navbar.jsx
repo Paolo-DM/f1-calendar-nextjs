@@ -31,14 +31,13 @@ MyLink.displayName = "MyLink";
 const solutions = [
   {
     name: "Driver Standings",
-    description:
-      "Get a better understanding of where your traffic is coming from.",
+    description: "Driver Standings of the chosen year",
     path: `/standings/driver-standings/${currentYear}`,
     icon: UserGroupIcon,
   },
   {
     name: "Constructor Standings",
-    description: "Speak directly to your customers in a more meaningful way.",
+    description: "Constructor Standings of the chosen year",
     path: `/standings/constructor-standings/${currentYear}`,
     icon: PresentationChartLineIcon,
   },
@@ -58,7 +57,7 @@ export default function Example() {
               <a>
                 <img
                   className="h-6 w-auto sm:h-8"
-                  src="../../f1_logo.svg"
+                  src="../../../f1_logo.svg"
                   alt="f1 logo"
                 />
               </a>
@@ -164,7 +163,7 @@ export default function Example() {
                 <div className="flex items-center justify-start">
                   <img
                     className="h-6 w-auto"
-                    src="../f1_logo.svg"
+                    src="../../f1_logo.svg"
                     alt="f1 logo"
                   />
                   <h1>F1Calendar</h1>
