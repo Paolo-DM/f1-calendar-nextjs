@@ -4,7 +4,6 @@ import ScrollModal from "./ScrollModal";
 
 function FullCalendar({ schedule, year }) {
   const yearSchedule = schedule.MRData.RaceTable.Races;
-  // const yearResults = yearlyResults.MRData.RaceTable.Races;
 
   return (
     <div className="w-[99%] md:w-[80%] mx-auto">
@@ -30,9 +29,6 @@ function FullCalendar({ schedule, year }) {
           <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
             Date
           </Table.Column>
-          {/* <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
-            Winner
-          </Table.Column> */}
           <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
             Race Res
           </Table.Column>
@@ -81,14 +77,6 @@ function FullCalendar({ schedule, year }) {
                       : raceDate.toLocaleString().slice(0, -3)}
                   </p>
                 </Table.Cell>
-                {/* <Table.Cell>
-                  <p className="font-mono font-semibold text-xs sm:text-base md:text-lg">
-                    {yearResults[race.round - 1]
-                      ? yearResults[race.round - 1]?.Results[0].Driver
-                          .familyName
-                      : "n.a."}
-                  </p>
-                </Table.Cell> */}
                 <Table.Cell>
                   <ScrollModal raceRound={race.round} year={year}></ScrollModal>
                 </Table.Cell>
