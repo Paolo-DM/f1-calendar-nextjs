@@ -6,7 +6,7 @@ function FullCalendar({ schedule, year }) {
   const yearSchedule = schedule.MRData.RaceTable.Races;
 
   return (
-    <div className="w-[99%] md:w-[80%] mx-auto">
+    <div className="w-[99%] md:w-[80%] mx-auto mb-8">
       <Table
         className="z-0"
         sticked
