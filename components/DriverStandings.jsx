@@ -4,7 +4,6 @@ import { flags } from "../public/img/flags/flagsCodeObj";
 function DriverStandings({ standing }) {
   const driverStanding =
     standing.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-  console.log("standing:", driverStanding);
   return (
     <div className="w-[99%] md:w-[80%] mx-auto mb-8">
       <Table
@@ -39,12 +38,9 @@ function DriverStandings({ standing }) {
         </Table.Header>
         <Table.Body>
           {driverStanding.map((pos) => {
-            // const raceDate = new Date(race.date + " " + race.time);
-            // const raceYear = new Date(race.date).getFullYear();
             let nationality = pos.Driver.nationality;
             let found = flags.find((country) => country.adj === nationality);
             let code = found ? found.code : "n/a";
-            console.log("CODE:", code);
 
             return (
               <Table.Row
@@ -84,7 +80,7 @@ function DriverStandings({ standing }) {
                   </p>
                 </Table.Cell>
                 <Table.Cell>
-                  <p className="font-mono text-xs sm:text-base md:text-lg">
+                  <p className="font-mono text-xs sm:text-base md:text-lg font-semibold">
                     {pos.points}
                   </p>
                 </Table.Cell>
