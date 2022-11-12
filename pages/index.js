@@ -124,9 +124,6 @@ export default function Home({
           </h1>
         </div>
       </main>
-      <footer className="bg-[#0b2834]">
-        <Footer></Footer>
-      </footer>
     </div>
   );
 }
