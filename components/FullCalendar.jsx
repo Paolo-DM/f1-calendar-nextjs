@@ -30,7 +30,7 @@ function FullCalendar({ schedule, year }) {
             Date
           </Table.Column>
           <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
-            Race Res
+            Results
           </Table.Column>
         </Table.Header>
         <Table.Body>
