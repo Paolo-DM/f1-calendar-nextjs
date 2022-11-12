@@ -18,21 +18,20 @@ export const getStaticProps = async ({ params }) => {
   const res = await fetch(`https://ergast.com/api/f1/${params.year}.json`);
   const schedule = await res.json();
 
-  const res1 = await fetch(
-    `https://ergast.com/api/f1/${params.year}/results.json?limit=600`
-  );
-  const results = await res1.json();
+  // const res1 = await fetch(
+  //   `https://ergast.com/api/f1/${params.year}/results.json?limit=600`
+  // );
+  // const results = await res1.json();
 
   return {
     props: {
       schedule: schedule,
-      yearlyResults: results,
       selectedYear: params.year,
     },
   };
 };
 
-function CalendarDetail({ schedule, yearlyResults, selectedYear }) {
+function CalendarDetail({ schedule, selectedYear }) {
   const [year, setYear] = useState(selectedYear);
   return (
     <>
@@ -41,11 +40,7 @@ function CalendarDetail({ schedule, yearlyResults, selectedYear }) {
         setYear={setYear}
         currentYear={currentYear}
       ></YearPicker>
-      <FullCalendar
-        schedule={schedule}
-        yearlyResults={yearlyResults}
-        year={year}
-      ></FullCalendar>
+      <FullCalendar schedule={schedule} year={year}></FullCalendar>
     </>
   );
 }
