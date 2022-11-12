@@ -76,7 +76,6 @@ function RaceStanding({ year, raceRound }) {
         </Table.Header>
         <Table.Body>
           {data.MRData.RaceTable.Races[0]?.Results.map((race) => {
-            console.log("race", race);
             return (
               <Table.Row
                 key={race.position}

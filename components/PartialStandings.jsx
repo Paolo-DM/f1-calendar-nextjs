@@ -6,8 +6,6 @@ function PartialStandings({ standings, type }) {
     standings.MRData.StandingsTable.StandingsLists[0].DriverStandings;
   const constructorStanding =
     standings.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-  console.log(driverStanding);
-  console.log(constructorStanding);
 
   return (
     <div className="relative">
