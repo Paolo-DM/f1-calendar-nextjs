@@ -1,8 +1,8 @@
 import { Table, User } from "@nextui-org/react";
-import { EyeIcon } from "@heroicons/react/outline";
 import { flags } from "../public/img/flags/flagsCodeObj";
+import ScrollModal from "./ScrollModal";
 
-function FullCalendar({ schedule, yearlyResults }) {
+function FullCalendar({ schedule, yearlyResults, year }) {
   const yearSchedule = schedule.MRData.RaceTable.Races;
   const yearResults = yearlyResults.MRData.RaceTable.Races;
 
@@ -90,7 +90,11 @@ function FullCalendar({ schedule, yearlyResults }) {
                   </p>
                 </Table.Cell>
                 <Table.Cell>
-                  <EyeIcon className="w-8 hover:text-[#979797a9] hover:cursor-pointer text-[#979797]" />
+                  <ScrollModal
+                    yearResults={yearResults}
+                    raceRound={race.round}
+                    year={year}
+                  ></ScrollModal>
                 </Table.Cell>
               </Table.Row>
             );
