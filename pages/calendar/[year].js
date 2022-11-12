@@ -6,7 +6,7 @@ const currentYear = new Date().getFullYear();
 
 export async function getStaticPaths() {
   // Get the paths we want to pre-render based on years
-  const paths = yearList(currentYear).map((y) => ({
+  const paths = yearList(1950, currentYear).map((y) => ({
     params: { year: y.toString() },
   }));
   // We'll pre-render only these paths at build time.
@@ -34,6 +34,7 @@ function CalendarDetail({ schedule, selectedYear }) {
         setYear={setYear}
         currentYear={currentYear}
         route="calendar"
+        startingY={1950}
       ></YearPicker>
       <FullCalendar schedule={schedule} year={year}></FullCalendar>
     </>
