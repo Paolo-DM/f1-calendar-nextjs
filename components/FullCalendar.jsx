@@ -57,7 +57,6 @@ function FullCalendar({ schedule, year }) {
                 </Table.Cell>
                 <Table.Cell>
                   <User
-                    className=""
                     zoomed
                     size="lg"
                     src={`../img/flags/${code.toLowerCase()}.svg`}
