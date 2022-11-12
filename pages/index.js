@@ -5,7 +5,6 @@ import { EmblaCarousel } from "../components/Carousel";
 import RaceSchedule from "../components/RaceSchedule";
 import PartialStandings from "../components/PartialStandings";
 import { Button } from "@nextui-org/react";
-import Footer from "../components/Footer";
 
 const currentYear = new Date().getFullYear();
 
@@ -88,7 +87,9 @@ export default function Home({
               ></PartialStandings>
             </div>
             <Button bordered auto className="w-1/4 m-auto my-2">
-              <a href={"/driver-standings"}>Full Driver Standings</a>
+              <a href={`/standings/driver-standings/${currentYear}`}>
+                Full Driver Standings
+              </a>
             </Button>
           </div>
           <div className="grid grid-rows-[0.1fr_400px_0.2fr] md:grid-rows-[0.1fr_1fr_0.2fr]  pt-6 md:pt-0">
@@ -102,7 +103,9 @@ export default function Home({
               ></PartialStandings>
             </div>
             <Button bordered auto className="w-1/4 m-auto mb-2 ">
-              <a href={"/driver-standings"}>Full Constructor Standings</a>
+              <a href={`/standings/constructor-standings/${currentYear}`}>
+                Full Constructor Standings
+              </a>
             </Button>
           </div>
           <div className="block">
