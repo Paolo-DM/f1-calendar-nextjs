@@ -33,13 +33,13 @@ const solutions = [
     name: "Driver Standings",
     description:
       "Get a better understanding of where your traffic is coming from.",
-    path: "/driver-standings",
+    path: `/standings/driver-standings/${currentYear}`,
     icon: UserGroupIcon,
   },
   {
     name: "Constructor Standings",
     description: "Speak directly to your customers in a more meaningful way.",
-    path: "/constructor-standings",
+    path: `/standings/constructor-standings/${currentYear}`,
     icon: PresentationChartLineIcon,
   },
 ];
