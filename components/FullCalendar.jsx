@@ -2,12 +2,12 @@ import { Table, User } from "@nextui-org/react";
 import { flags } from "../public/img/flags/flagsCodeObj";
 import ScrollModal from "./ScrollModal";
 
-function FullCalendar({ schedule, yearlyResults, year }) {
+function FullCalendar({ schedule, year }) {
   const yearSchedule = schedule.MRData.RaceTable.Races;
-  const yearResults = yearlyResults.MRData.RaceTable.Races;
+  // const yearResults = yearlyResults.MRData.RaceTable.Races;
 
   return (
-    <div className="md:w-[99%] md:mx-auto">
+    <div className="w-[99%] md:w-[80%] mx-auto">
       <Table
         className="z-0"
         sticked
@@ -30,11 +30,11 @@ function FullCalendar({ schedule, yearlyResults, year }) {
           <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
             Date
           </Table.Column>
-          <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
+          {/* <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
             Winner
-          </Table.Column>
+          </Table.Column> */}
           <Table.Column className="text-sm md:text-lg bg-[#0b2834] text-white font-['Raleway']">
-            Results
+            Race Res
           </Table.Column>
         </Table.Header>
         <Table.Body>
@@ -81,20 +81,16 @@ function FullCalendar({ schedule, yearlyResults, year }) {
                       : raceDate.toLocaleString().slice(0, -3)}
                   </p>
                 </Table.Cell>
-                <Table.Cell>
+                {/* <Table.Cell>
                   <p className="font-mono font-semibold text-xs sm:text-base md:text-lg">
                     {yearResults[race.round - 1]
                       ? yearResults[race.round - 1]?.Results[0].Driver
                           .familyName
                       : "n.a."}
                   </p>
-                </Table.Cell>
+                </Table.Cell> */}
                 <Table.Cell>
-                  <ScrollModal
-                    yearResults={yearResults}
-                    raceRound={race.round}
-                    year={year}
-                  ></ScrollModal>
+                  <ScrollModal raceRound={race.round} year={year}></ScrollModal>
                 </Table.Cell>
               </Table.Row>
             );
