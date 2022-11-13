@@ -376,7 +376,7 @@ export const flags = [
     code: "VE",
     code3: "VEN",
     name: "Venezuela",
-    adj: "862",
+    adj: "Venezuelan",
   },
   { code: "VN", code3: "VNM", name: "Viet Nam", adj: "Vietnamese" },
   { code: "VG", code3: "VGB", name: "Virgin Islands", adj: "092" },
