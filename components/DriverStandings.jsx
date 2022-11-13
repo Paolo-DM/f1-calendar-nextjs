@@ -62,10 +62,16 @@ function DriverStandings({ standing }) {
                     size="lg"
                     src={`../../img/flags/${code.toLowerCase()}.svg`}
                     altText="Country flag"
-                    name={pos.Driver.givenName + " " + pos.Driver.familyName}
+                    name={
+                      <p className="font-mono text-xs sm:text-base md:text-lg">
+                        {pos.Driver.givenName + " " + pos.Driver.familyName}
+                      </p>
+                    }
                     css={{ p: 0 }}
                   >
-                    {pos.Driver.permanentNumber}
+                    <p className="font-mono text-sm">
+                      {pos.Driver.permanentNumber}
+                    </p>
                   </User>
                 </Table.Cell>
                 <Table.Cell>
