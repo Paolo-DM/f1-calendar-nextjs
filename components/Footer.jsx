@@ -22,10 +22,10 @@ export default function Footer() {
             <Grid xs={12}>
               <Link
                 css={{ color: "$accents8" }}
-                href="www.f1-calendar-paolo-dm.vercel.app"
+                href="https://f1calendar.vercel.app/"
                 target="_blank"
               >
-                www.f1-calendar-paolo-dm.vercel.app
+                https://f1calendar.vercel.app/
               </Link>
             </Grid>
           </Grid.Container>
