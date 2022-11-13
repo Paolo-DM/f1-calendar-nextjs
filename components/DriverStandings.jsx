@@ -69,7 +69,7 @@ function DriverStandings({ standing }) {
                     }
                     css={{ p: 0 }}
                   >
-                    <p className="font-mono text-sm">
+                    <p className="font-mono text-xs md:text-sm">
                       {pos.Driver.permanentNumber}
                     </p>
                   </User>
