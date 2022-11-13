@@ -58,10 +58,16 @@ function ConstructorStandings({ standing }) {
                     size="lg"
                     src={`../../img/flags/${code.toLowerCase()}.svg`}
                     altText="Country flag"
-                    name={pos.Constructor.name}
+                    name={
+                      <p className="font-mono text-xs sm:text-base md:text-lg">
+                        {pos.Constructor.name}
+                      </p>
+                    }
                     css={{ p: 0 }}
                   >
-                    {nationality}
+                    <p className="font-mono text-xs md:text-sm">
+                      {nationality}
+                    </p>
                   </User>
                 </Table.Cell>
                 <Table.Cell>
