@@ -53,7 +53,7 @@ export default function Home({
             F1 Schedule {currentYear}
           </h1>
           <div className="grid  gap-4 md:gap-0 md:grid-cols-[1.3fr_1fr] md:border-b  md:rounded-lg md:pt-2 md:pb-6">
-            <div className="pt-10 ml-2">
+            <div className="pt-10 md:ml-2">
               <EmblaCarousel
                 raceId={raceId}
                 setRaceId={setRaceId}
