@@ -35,6 +35,7 @@ function CalendarDetail({ schedule, selectedYear }) {
         currentYear={currentYear}
         route="calendar"
         startingY={1950}
+        description="Select a year to see its calendar and results"
       ></YearPicker>
       <FullCalendar schedule={schedule} year={year}></FullCalendar>
     </>

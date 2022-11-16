@@ -40,6 +40,7 @@ function CalendarDetail({ standing, selectedYear }) {
         currentYear={currentYear}
         route="driver-standings"
         startingY={1950}
+        description="Select a year to see its driver standings"
       ></YearPicker>
       <DriverStandings standing={standing} year={year}></DriverStandings>
     </>

@@ -40,6 +40,7 @@ function ConstStandings({ standing, selectedYear }) {
         currentYear={currentYear}
         route="constructor-standings"
         startingY={1958}
+        description="Select a year to see its constructor standings"
       ></YearPicker>
       <ConstructorStandings
         standing={standing}
