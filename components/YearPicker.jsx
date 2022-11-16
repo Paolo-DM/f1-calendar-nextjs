@@ -9,7 +9,14 @@ export const yearList = (startingY, currY) => {
   return years;
 };
 
-function YearPicker({ year, setYear, startingY, currentYear, route }) {
+function YearPicker({
+  year,
+  setYear,
+  startingY,
+  currentYear,
+  route,
+  description,
+}) {
   return (
     <div className="md:w-[50%] md:mx-auto my-3 mx-1">
       <Collapse
@@ -17,11 +24,7 @@ function YearPicker({ year, setYear, startingY, currentYear, route }) {
         title={
           <p className="text-2xl font-['Raleway'] font-semibold">{year}</p>
         }
-        subtitle={
-          <p className="text-xl font-['Raleway']">
-            Choose a year to see its calendar and results
-          </p>
-        }
+        subtitle={<p className="text-xl font-['Raleway']">{description}</p>}
       >
         <div className="flex flex-wrap gap-4">
           {yearList(startingY, currentYear).map((year) => {
