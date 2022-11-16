@@ -59,7 +59,7 @@ export default function Home({
                 setRaceId={setRaceId}
               ></EmblaCarousel>
             </div>
-            <div className="py-10">
+            <div className="py-10 lg:py-0 pb-0">
               <RaceSchedule data={calendarData} raceId={raceId}></RaceSchedule>
             </div>
           </div>
