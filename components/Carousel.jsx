@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import { circuits } from "../public/img/circuits";
@@ -7,6 +7,7 @@ import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/solid";
 export const EmblaCarousel = ({ raceId, setRaceId }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
+    draggable: false,
     startIndex: raceId,
   });
 
