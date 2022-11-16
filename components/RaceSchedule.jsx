@@ -20,22 +20,22 @@ function RaceSchedule({ data, raceId }) {
   return (
     <div className=" h-full flex items-center justify-center py-5 border-gray-400 border-t  md:border-none md:py-0">
       <div className="flex flex-col gap-4 font-mono">
-        <h1 className="text-2xl lg:text-3xl xl:text-4xl">
+        <h1 className="text-3xl md:text-2xl lg:text-3xl xl:text-4xl">
           {data.RaceTable.Races[raceId].raceName}
         </h1>
-        <p className="text-lg lg:text-xl xl:text-2xl ">
+        <p className="text-xl md:text-lg lg:text-xl xl:text-2xl ">
           <strong>Circuit</strong>:{" "}
           <span className="text-gray-600">
             {data.RaceTable.Races[raceId].Circuit.circuitName}
           </span>
         </p>
-        <p className="text-lg lg:text-xl xl:text-2xl ">
+        <p className="text-xl md:text-lg lg:text-xl xl:text-2xl ">
           <strong>Qualifying</strong>:{" "}
           <span className="text-gray-600">
             {qualifyingDate.toLocaleString().slice(0, -3)}
           </span>
         </p>
-        <p className="text-lg lg:text-xl xl:text-2xl ">
+        <p className="text-xl md:text-lg lg:text-xl xl:text-2xl ">
           <strong>Sprint Race</strong>:{" "}
           {sprintDate ? (
             <span className="text-gray-600">
@@ -45,7 +45,7 @@ function RaceSchedule({ data, raceId }) {
             <span className="text-gray-600">{"n/a"}</span>
           )}
         </p>
-        <p className="text-lg lg:text-xl xl:text-2xl ">
+        <p className="text-xl md:text-lg lg:text-xl xl:text-2xl ">
           <strong>Race</strong>:{" "}
           <span className="text-gray-600">
             {raceDate.toLocaleString().slice(0, -3)}
