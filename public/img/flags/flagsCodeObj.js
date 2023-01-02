@@ -369,6 +369,12 @@ export const flags = [
     name: "USA",
     adj: "American",
   },
+  {
+    code: "US",
+    code3: "USA",
+    name: "United States",
+    adj: "American",
+  },
   { code: "UY", code3: "URY", name: "Uruguay", adj: "Uruguayan" },
   { code: "UZ", code3: "UZB", name: "Uzbekistan", adj: "860" },
   { code: "VU", code3: "VUT", name: "Vanuatu", adj: "548" },
