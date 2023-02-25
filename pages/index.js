@@ -9,18 +9,27 @@ import { Button } from "@nextui-org/react";
 const currentYear = new Date().getFullYear();
 
 export const getStaticProps = async () => {
-  const res = await fetch(`https://ergast.com/api/f1/current.json`);
+  // const res = await fetch(`https://ergast.com/api/f1/current.json`);
+  const res = await fetch(`https://ergast.com/api/f1/2023.json`);
   const schedule = await res.json();
-  const res2 = await fetch(`https://ergast.com/api/f1/current/next.json`);
+  // const res2 = await fetch(`https://ergast.com/api/f1/current/next.json`);
+  const res2 = await fetch(`https://ergast.com/api/f1/2023/next.json`);
   const nextRace = await res2.json();
+  // const res3 = await fetch(
+  //   "https://ergast.com/api/f1/current/driverStandings.json"
+  // );
   const res3 = await fetch(
-    "https://ergast.com/api/f1/current/driverStandings.json"
+    "https://ergast.com/api/f1/2023/driverStandings.json"
   );
   const driverStandings = await res3.json();
+  // const res4 = await fetch(
+  //   "https://ergast.com/api/f1/current/constructorStandings.json"
+  // );
   const res4 = await fetch(
-    "https://ergast.com/api/f1/current/constructorStandings.json"
+    "https://ergast.com/api/f1/2023/constructorStandings.json"
   );
   const constructorStandings = await res4.json();
+  console.log("Constructor", constructorStandings);
 
   return {
     props: {
@@ -39,6 +48,7 @@ export default function Home({
   constructorStandings,
 }) {
   const [raceId, setRaceId] = useState(Number(nextRace) - 1);
+  const currYear = calendarData.RaceTable.season;
   return (
     <div>
       <Head>
@@ -50,7 +60,7 @@ export default function Home({
         {/* SCHEDULE */}
         <div className="schedule-container bg-[#e6e5e5]">
           <h1 className="text-center text-3xl font-['Raleway'] mb-4 lg:text-4xl bg-[#42636e] text-white py-1 font-extralight tracking-wide">
-            F1 Schedule {currentYear}
+            F1 Schedule {currYear}
           </h1>
           <div className="grid  gap-4 md:gap-0 md:grid-cols-[1.3fr_1fr] md:border-b  md:rounded-lg md:pt-2 md:pb-6">
             <div className="pt-10 md:ml-2">
