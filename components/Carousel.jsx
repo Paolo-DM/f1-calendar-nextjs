@@ -59,7 +59,7 @@ export const EmblaCarousel = ({ raceId, setRaceId }) => {
       </button>
 
       <button
-        disabled={raceId > 20}
+        disabled={raceId > circuits.length - 2}
         onClick={scrollNext}
         className=" cursor-pointer absolute top-1/2 right-2 h-8 w-8  rounded-full bg-neutral-500 bg-opacity-10 text-gray-500 disabled:text-slate-300 disabled:bg-transparent disabled:cursor-not-allowed"
       >
