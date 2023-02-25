@@ -83,7 +83,7 @@ function PartialStandings({ standings, type }) {
                       name={`${pos.Driver.givenName} ${pos.Driver.familyName}`}
                       css={{ p: 0 }}
                     >
-                      {pos.Constructors[0].name}
+                      {pos.Constructors[0]?.name}
                     </User>
                   </Table.Cell>
                   <Table.Cell css={{ color: "$blue900", fontWeight: "900" }}>

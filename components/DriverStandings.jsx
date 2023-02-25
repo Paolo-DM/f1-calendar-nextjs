@@ -86,7 +86,7 @@ function DriverStandings({ standing }) {
                   </Table.Cell>
                   <Table.Cell>
                     <p className="font-mono text-xs sm:text-base md:text-lg">
-                      {pos.Constructors[0].name}
+                      {pos.Constructors[0]?.name}
                     </p>
                   </Table.Cell>
 
