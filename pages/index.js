@@ -6,27 +6,17 @@ import RaceSchedule from "../components/RaceSchedule";
 import PartialStandings from "../components/PartialStandings";
 import { Button } from "@nextui-org/react";
 
-const currentYear = new Date().getFullYear();
-
 export const getStaticProps = async () => {
-  // const res = await fetch(`https://ergast.com/api/f1/current.json`);
-  const res = await fetch(`https://ergast.com/api/f1/2023.json`);
+  const res = await fetch(`https://ergast.com/api/f1/current.json`);
   const schedule = await res.json();
-  // const res2 = await fetch(`https://ergast.com/api/f1/current/next.json`);
-  const res2 = await fetch(`https://ergast.com/api/f1/2023/next.json`);
+  const res2 = await fetch(`https://ergast.com/api/f1/current/next.json`);
   const nextRace = await res2.json();
-  // const res3 = await fetch(
-  //   "https://ergast.com/api/f1/current/driverStandings.json"
-  // );
   const res3 = await fetch(
-    "https://ergast.com/api/f1/2023/driverStandings.json"
+    "https://ergast.com/api/f1/current/driverStandings.json"
   );
   const driverStandings = await res3.json();
-  // const res4 = await fetch(
-  //   "https://ergast.com/api/f1/current/constructorStandings.json"
-  // );
   const res4 = await fetch(
-    "https://ergast.com/api/f1/2023/constructorStandings.json"
+    "https://ergast.com/api/f1/current/constructorStandings.json"
   );
   const constructorStandings = await res4.json();
   console.log("Constructor", constructorStandings);
@@ -97,7 +87,7 @@ export default function Home({
               ></PartialStandings>
             </div>
             <Button bordered auto className="w-1/4 m-auto my-2">
-              <a href={`/standings/driver-standings/${currentYear}`}>
+              <a href={`/standings/driver-standings/${currYear}`}>
                 Full Driver Standings
               </a>
             </Button>
@@ -113,7 +103,7 @@ export default function Home({
               ></PartialStandings>
             </div>
             <Button bordered auto className="w-1/4 m-auto mb-2 ">
-              <a href={`/standings/constructor-standings/${currentYear}`}>
+              <a href={`/standings/constructor-standings/${currYear}`}>
                 Full Constructor Standings
               </a>
             </Button>
