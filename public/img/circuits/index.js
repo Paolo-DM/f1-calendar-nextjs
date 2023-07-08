@@ -87,8 +87,4 @@ export const circuits = [
     id: 22,
     src: "/img/circuits/22.png",
   },
-  {
-    id: 23,
-    src: "/img/circuits/23.png",
-  },
 ];

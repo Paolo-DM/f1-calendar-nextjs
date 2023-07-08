@@ -19,7 +19,6 @@ export const getStaticProps = async () => {
     "https://ergast.com/api/f1/current/constructorStandings.json"
   );
   const constructorStandings = await res4.json();
-  console.log("Constructor", constructorStandings);
 
   return {
     props: {
