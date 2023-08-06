@@ -1,5 +1,6 @@
 import { NextUIProvider } from "@nextui-org/react";
 import Layout from "../components/Layout";
+import { Analytics } from "@vercel/analytics/react";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -7,6 +8,7 @@ function MyApp({ Component, pageProps }) {
     <Layout>
       <NextUIProvider>
         <Component {...pageProps} />
+        <Analytics />
       </NextUIProvider>
     </Layout>
   );
