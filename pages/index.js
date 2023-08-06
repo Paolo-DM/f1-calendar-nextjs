@@ -47,18 +47,18 @@ export default function Home({
       </Head>
       <main>
         {/* SCHEDULE */}
-        <div className="schedule-container bg-[#e6e5e5]">
+        <div className="schedule-container bg-[#e6e5e5] ">
           <h1 className="text-center text-3xl font-['Raleway'] mb-4 lg:text-4xl bg-[#42636e] text-white py-1 font-extralight tracking-wide">
             F1 Schedule {currYear}
           </h1>
-          <div className="grid  gap-4 md:gap-0 md:grid-cols-[1.3fr_1fr] md:border-b  md:rounded-lg md:pt-2 md:pb-6">
-            <div className="pt-10 md:ml-2">
+          <div className="grid gap-2 md:gap-0 md:grid-cols-[1.2fr,1fr] md:border-b  md:rounded-lg  md:py-16 items-center justify-center">
+            <div className="">
               <EmblaCarousel
                 raceId={raceId}
                 setRaceId={setRaceId}
               ></EmblaCarousel>
             </div>
-            <div className="py-10 lg:py-0 pb-0">
+            <div className="py-10 pb-6 md:py-0 md:pb-0">
               <RaceSchedule data={calendarData} raceId={raceId}></RaceSchedule>
             </div>
           </div>
