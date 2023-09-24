@@ -27,6 +27,7 @@ export const getStaticProps = async () => {
       driverStandings: driverStandings,
       constructorStandings: constructorStandings,
     },
+    revalidate: 7200,
   };
 };
 

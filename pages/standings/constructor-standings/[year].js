@@ -26,6 +26,7 @@ export const getStaticProps = async ({ params }) => {
       standing: standing,
       selectedYear: params.year,
     },
+    revalidate: 7200,
   };
 };
 
