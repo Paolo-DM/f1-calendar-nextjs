@@ -73,7 +73,9 @@ function FullCalendar({ schedule, year }) {
                       ? new Date(race.date + ", 03:00:00")
                           .toLocaleString()
                           .slice(0, -10)
-                      : raceDate.toLocaleString().slice(0, -3)}
+                      : raceDate.toLocaleString() !== "Invalid Date"
+                      ? raceDate.toLocaleString().slice(0, -3)
+                      : "TBA"}
                   </p>
                 </Table.Cell>
                 <Table.Cell>
